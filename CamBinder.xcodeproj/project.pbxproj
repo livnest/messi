@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F1DCAC4D197A8AF900C98311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4C197A8AF900C98311 /* Foundation.framework */; };
+		F1DCAC4F197A8AF900C98311 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */; };
+		F1DCAC51197A8AF900C98311 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC50197A8AF900C98311 /* UIKit.framework */; };
+		F1DCAC57197A8AF900C98311 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1DCAC55197A8AF900C98311 /* InfoPlist.strings */; };
+		F1DCAC59197A8AF900C98311 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAC58197A8AF900C98311 /* main.m */; };
+		F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAC5C197A8AF900C98311 /* AppDelegate.m */; };
+		F1DCAC60197A8AF900C98311 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1DCAC5E197A8AF900C98311 /* Main.storyboard */; };
+		F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAC62197A8AF900C98311 /* ViewController.m */; };
+		F1DCAC65197A8AF900C98311 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DCAC64197A8AF900C98311 /* Images.xcassets */; };
+		F1DCAC6C197A8AF900C98311 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC6B197A8AF900C98311 /* XCTest.framework */; };
+		F1DCAC6D197A8AF900C98311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4C197A8AF900C98311 /* Foundation.framework */; };
+		F1DCAC6E197A8AF900C98311 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC50197A8AF900C98311 /* UIKit.framework */; };
+		F1DCAC76197A8AF900C98311 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1DCAC74197A8AF900C98311 /* InfoPlist.strings */; };
+		F1DCAC78197A8AF900C98311 /* CamBinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DCAC77197A8AF900C98311 /* CamBinderTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1DCAC6F197A8AF900C98311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1DCAC41197A8AF900C98311 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1DCAC48197A8AF900C98311;
+			remoteInfo = CamBinder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F1DCAC49197A8AF900C98311 /* CamBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1DCAC4C197A8AF900C98311 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F1DCAC50197A8AF900C98311 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F1DCAC54197A8AF900C98311 /* CamBinder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CamBinder-Info.plist"; sourceTree = "<group>"; };
+		F1DCAC56197A8AF900C98311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1DCAC58197A8AF900C98311 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F1DCAC5A197A8AF900C98311 /* CamBinder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CamBinder-Prefix.pch"; sourceTree = "<group>"; };
+		F1DCAC5B197A8AF900C98311 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F1DCAC5C197A8AF900C98311 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F1DCAC5F197A8AF900C98311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1DCAC61197A8AF900C98311 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F1DCAC62197A8AF900C98311 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F1DCAC64197A8AF900C98311 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F1DCAC6A197A8AF900C98311 /* CamBinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamBinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1DCAC6B197A8AF900C98311 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F1DCAC73197A8AF900C98311 /* CamBinderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CamBinderTests-Info.plist"; sourceTree = "<group>"; };
+		F1DCAC75197A8AF900C98311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1DCAC77197A8AF900C98311 /* CamBinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamBinderTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1DCAC46197A8AF900C98311 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1DCAC4F197A8AF900C98311 /* CoreGraphics.framework in Frameworks */,
+				F1DCAC51197A8AF900C98311 /* UIKit.framework in Frameworks */,
+				F1DCAC4D197A8AF900C98311 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1DCAC67197A8AF900C98311 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1DCAC6C197A8AF900C98311 /* XCTest.framework in Frameworks */,
+				F1DCAC6E197A8AF900C98311 /* UIKit.framework in Frameworks */,
+				F1DCAC6D197A8AF900C98311 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F1DCAC40197A8AF900C98311 = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC52197A8AF900C98311 /* CamBinder */,
+				F1DCAC71197A8AF900C98311 /* CamBinderTests */,
+				F1DCAC4B197A8AF900C98311 /* Frameworks */,
+				F1DCAC4A197A8AF900C98311 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1DCAC4A197A8AF900C98311 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC49197A8AF900C98311 /* CamBinder.app */,
+				F1DCAC6A197A8AF900C98311 /* CamBinderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1DCAC4B197A8AF900C98311 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC4C197A8AF900C98311 /* Foundation.framework */,
+				F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */,
+				F1DCAC50197A8AF900C98311 /* UIKit.framework */,
+				F1DCAC6B197A8AF900C98311 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1DCAC52197A8AF900C98311 /* CamBinder */ = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC5B197A8AF900C98311 /* AppDelegate.h */,
+				F1DCAC5C197A8AF900C98311 /* AppDelegate.m */,
+				F1DCAC5E197A8AF900C98311 /* Main.storyboard */,
+				F1DCAC61197A8AF900C98311 /* ViewController.h */,
+				F1DCAC62197A8AF900C98311 /* ViewController.m */,
+				F1DCAC64197A8AF900C98311 /* Images.xcassets */,
+				F1DCAC53197A8AF900C98311 /* Supporting Files */,
+			);
+			path = CamBinder;
+			sourceTree = "<group>";
+		};
+		F1DCAC53197A8AF900C98311 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC54197A8AF900C98311 /* CamBinder-Info.plist */,
+				F1DCAC55197A8AF900C98311 /* InfoPlist.strings */,
+				F1DCAC58197A8AF900C98311 /* main.m */,
+				F1DCAC5A197A8AF900C98311 /* CamBinder-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1DCAC71197A8AF900C98311 /* CamBinderTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC77197A8AF900C98311 /* CamBinderTests.m */,
+				F1DCAC72197A8AF900C98311 /* Supporting Files */,
+			);
+			path = CamBinderTests;
+			sourceTree = "<group>";
+		};
+		F1DCAC72197A8AF900C98311 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1DCAC73197A8AF900C98311 /* CamBinderTests-Info.plist */,
+				F1DCAC74197A8AF900C98311 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1DCAC48197A8AF900C98311 /* CamBinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1DCAC7B197A8AF900C98311 /* Build configuration list for PBXNativeTarget "CamBinder" */;
+			buildPhases = (
+				F1DCAC45197A8AF900C98311 /* Sources */,
+				F1DCAC46197A8AF900C98311 /* Frameworks */,
+				F1DCAC47197A8AF900C98311 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CamBinder;
+			productName = CamBinder;
+			productReference = F1DCAC49197A8AF900C98311 /* CamBinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F1DCAC69197A8AF900C98311 /* CamBinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1DCAC7E197A8AF900C98311 /* Build configuration list for PBXNativeTarget "CamBinderTests" */;
+			buildPhases = (
+				F1DCAC66197A8AF900C98311 /* Sources */,
+				F1DCAC67197A8AF900C98311 /* Frameworks */,
+				F1DCAC68197A8AF900C98311 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1DCAC70197A8AF900C98311 /* PBXTargetDependency */,
+			);
+			name = CamBinderTests;
+			productName = CamBinderTests;
+			productReference = F1DCAC6A197A8AF900C98311 /* CamBinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1DCAC41197A8AF900C98311 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = MatsumotoTakuma;
+				TargetAttributes = {
+					F1DCAC69197A8AF900C98311 = {
+						TestTargetID = F1DCAC48197A8AF900C98311;
+					};
+				};
+			};
+			buildConfigurationList = F1DCAC44197A8AF900C98311 /* Build configuration list for PBXProject "CamBinder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1DCAC40197A8AF900C98311;
+			productRefGroup = F1DCAC4A197A8AF900C98311 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1DCAC48197A8AF900C98311 /* CamBinder */,
+				F1DCAC69197A8AF900C98311 /* CamBinderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1DCAC47197A8AF900C98311 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1DCAC65197A8AF900C98311 /* Images.xcassets in Resources */,
+				F1DCAC57197A8AF900C98311 /* InfoPlist.strings in Resources */,
+				F1DCAC60197A8AF900C98311 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1DCAC68197A8AF900C98311 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1DCAC76197A8AF900C98311 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1DCAC45197A8AF900C98311 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */,
+				F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */,
+				F1DCAC59197A8AF900C98311 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1DCAC66197A8AF900C98311 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1DCAC78197A8AF900C98311 /* CamBinderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1DCAC70197A8AF900C98311 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1DCAC48197A8AF900C98311 /* CamBinder */;
+			targetProxy = F1DCAC6F197A8AF900C98311 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F1DCAC55197A8AF900C98311 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1DCAC56197A8AF900C98311 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1DCAC5E197A8AF900C98311 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1DCAC5F197A8AF900C98311 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F1DCAC74197A8AF900C98311 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1DCAC75197A8AF900C98311 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1DCAC79197A8AF900C98311 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F1DCAC7A197A8AF900C98311 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1DCAC7C197A8AF900C98311 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamBinder/CamBinder-Prefix.pch";
+				INFOPLIST_FILE = "CamBinder/CamBinder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F1DCAC7D197A8AF900C98311 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamBinder/CamBinder-Prefix.pch";
+				INFOPLIST_FILE = "CamBinder/CamBinder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F1DCAC7F197A8AF900C98311 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CamBinder.app/CamBinder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamBinder/CamBinder-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CamBinderTests/CamBinderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F1DCAC80197A8AF900C98311 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CamBinder.app/CamBinder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamBinder/CamBinder-Prefix.pch";
+				INFOPLIST_FILE = "CamBinderTests/CamBinderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1DCAC44197A8AF900C98311 /* Build configuration list for PBXProject "CamBinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1DCAC79197A8AF900C98311 /* Debug */,
+				F1DCAC7A197A8AF900C98311 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1DCAC7B197A8AF900C98311 /* Build configuration list for PBXNativeTarget "CamBinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1DCAC7C197A8AF900C98311 /* Debug */,
+				F1DCAC7D197A8AF900C98311 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1DCAC7E197A8AF900C98311 /* Build configuration list for PBXNativeTarget "CamBinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1DCAC7F197A8AF900C98311 /* Debug */,
+				F1DCAC80197A8AF900C98311 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1DCAC41197A8AF900C98311 /* Project object */;
+}
