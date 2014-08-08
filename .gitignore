@@ -6,3 +6,8 @@
 #
 # Pods/
 
+xcuserdata
+*.xccheckout
+
+# OSX
+.DS_Store
