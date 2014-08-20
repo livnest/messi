@@ -6,8 +6,8 @@
 #
 # Pods/
 
-xcuserdata
-*.xccheckout
+#xcuserdata
+#*.xccheckout
 
 # OSX
 .DS_Store
