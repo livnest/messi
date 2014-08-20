@@ -32,6 +32,7 @@
     [super viewDidLoad];
     //ほりほり
 	//ほり
+    //horitaku
 }
 
 - (void)didReceiveMemoryWarning
