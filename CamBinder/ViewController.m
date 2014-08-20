@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     //ほりほり
-	
+	//ほり
 }
 
 - (void)didReceiveMemoryWarning
