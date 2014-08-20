@@ -23,7 +23,6 @@
 - (IBAction)CallStamp:(id)sender;
 - (IBAction)CallCompose:(id)sender;
 
-
 @end
 
 @implementation ViewController
