@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="4654" y="-1261"/>
         </scene>
-        <!--View Controller-->
+        <!--Note View Controller-->
         <scene sceneID="jqQ-yc-ob8">
             <objects>
-                <viewController id="c54-TM-9Kr" sceneMemberID="viewController">
+                <viewController id="c54-TM-9Kr" customClass="NoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ult-V6-OkQ"/>
                         <viewControllerLayoutGuide type="bottom" id="0bf-l6-sib"/>
@@ -125,15 +125,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UdT-fA-ZsB">
-                        <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="dRM-eV-Xat">
-                            <rect key="frame" x="96" y="7" width="128" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="UdT-fA-ZsB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKY-OM-mJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
