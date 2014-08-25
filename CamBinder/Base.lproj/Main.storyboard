@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="4226" y="-1261"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Note View Controller-->
         <scene sceneID="oNW-5A-u2N">
             <objects>
-                <viewController id="HAc-rP-8BM" sceneMemberID="viewController">
+                <viewController id="HAc-rP-8BM" customClass="SelectNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0YQ-pL-41Y"/>
                         <viewControllerLayoutGuide type="bottom" id="OVD-27-Ymg"/>
