@@ -11,7 +11,6 @@
 @interface CaTabelViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSourceiPhone;
-@property (nonatomic, strong) NSArray *dataSourceAndroid;
 @end
 
 @implementation CaTabelViewController
@@ -32,8 +31,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     // テーブルに表示したいデータソースをセット
-    self.dataSourceiPhone = @[@"iPhone 4", @"iPhone 4S", @"iPhone 5", @"iPhone 5c", @"iPhone 5s"];
-    self.dataSourceAndroid = @[@"Nexus", @"Galaxy", @"Xperia"];
+    self.dataSourceiPhone = @[ ];
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -49,9 +48,7 @@
         case 0:
             cell.textLabel.text = self.dataSourceiPhone[indexPath.row];
             break;
-        case 1:
-            cell.textLabel.text = self.dataSourceAndroid[indexPath.row];
-            break;
+       
         default:
             break;
     }
@@ -71,10 +68,7 @@
         case 0:
             dataCount = self.dataSourceiPhone.count;
             break;
-        case 1:
-            dataCount = self.dataSourceAndroid.count;
-            break;
-        default:
+                default:
             break;
     }
     return dataCount;
