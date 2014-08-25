@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */; };
-		F13D154819A38AA200FD90C6 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13D154719A38AA200FD90C6 /* MasterViewController.m */; };
-		F13D154B19A3928300FD90C6 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13D154A19A3928300FD90C6 /* AddItemViewController.m */; };
-		F13D154E19A392BE00FD90C6 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13D154D19A392BE00FD90C6 /* EditItemViewController.m */; };
 		F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13FF23019AA4867004CB13E /* NoteViewController.m */; };
 		F13FF24A19AB2D92004CB13E /* SelectNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13FF24919AB2D92004CB13E /* SelectNoteViewController.m */; };
 		F1DCAC4D197A8AF900C98311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4C197A8AF900C98311 /* Foundation.framework */; };
@@ -42,12 +39,6 @@
 /* Begin PBXFileReference section */
 		60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaTabelViewController.h; sourceTree = "<group>"; };
 		60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaTabelViewController.m; sourceTree = "<group>"; };
-		F13D154619A38AA200FD90C6 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		F13D154719A38AA200FD90C6 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		F13D154919A3928300FD90C6 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
-		F13D154A19A3928300FD90C6 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
-		F13D154C19A392BE00FD90C6 /* EditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemViewController.h; sourceTree = "<group>"; };
-		F13D154D19A392BE00FD90C6 /* EditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemViewController.m; sourceTree = "<group>"; };
 		F13FF22F19AA4867004CB13E /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
 		F13FF23019AA4867004CB13E /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
 		F13FF24819AB2D92004CB13E /* SelectNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectNoteViewController.h; sourceTree = "<group>"; };
@@ -151,12 +142,6 @@
 				60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */,
 				F1DCAC64197A8AF900C98311 /* Images.xcassets */,
 				F1DCAC53197A8AF900C98311 /* Supporting Files */,
-				F13D154619A38AA200FD90C6 /* MasterViewController.h */,
-				F13D154719A38AA200FD90C6 /* MasterViewController.m */,
-				F13D154919A3928300FD90C6 /* AddItemViewController.h */,
-				F13D154A19A3928300FD90C6 /* AddItemViewController.m */,
-				F13D154C19A392BE00FD90C6 /* EditItemViewController.h */,
-				F13D154D19A392BE00FD90C6 /* EditItemViewController.m */,
 			);
 			path = CamBinder;
 			sourceTree = "<group>";
@@ -287,13 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F13D154819A38AA200FD90C6 /* MasterViewController.m in Sources */,
-				F13D154E19A392BE00FD90C6 /* EditItemViewController.m in Sources */,
 				F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */,
 				F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */,
 				F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */,
 				F13FF24A19AB2D92004CB13E /* SelectNoteViewController.m in Sources */,
-				F13D154B19A3928300FD90C6 /* AddItemViewController.m in Sources */,
 				F1DCAC59197A8AF900C98311 /* main.m in Sources */,
 				60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */,
 			);
