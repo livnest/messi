@@ -55,65 +55,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="axK-i6-ahU" id="e49-gl-eGB"/>
-                        <segue destination="HAc-rP-8BM" kind="push" id="siE-Jt-4GB"/>
+                        <segue destination="c54-TM-9Kr" kind="push" id="Zjr-RD-dKx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TqP-Yg-rW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4231" y="-1261"/>
-        </scene>
-        <!--Select Note View Controller - 授業回選択-->
-        <scene sceneID="oNW-5A-u2N">
-            <objects>
-                <viewController id="HAc-rP-8BM" customClass="SelectNoteViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0YQ-pL-41Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="OVD-27-Ymg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HNi-E5-LO0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZaA-iE-3si">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QWi-iA-UoI">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWi-iA-UoI" id="TO0-s0-UR1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7m-Fl-p6s">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.18501938870000001" green="0.20691719889999999" blue="0.052606067520000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3Un-FU-4rW"/>
-                                    <barButtonItem systemItem="add" id="OOU-Kt-3Hb"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="w5j-ar-Xc9"/>
-                                </items>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="授業回選択" id="mNA-u1-5eL">
-                        <barButtonItem key="leftBarButtonItem" title="＜戻る" id="tNS-ZS-xJr"/>
-                        <barButtonItem key="rightBarButtonItem" title="編集" id="8RA-b1-xAV"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="c54-TM-9Kr" kind="push" id="QwD-90-amF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9fg-1J-AgC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4654" y="-1261"/>
         </scene>
         <!--Note View Controller - Note-->
         <scene sceneID="jqQ-yc-ob8">
