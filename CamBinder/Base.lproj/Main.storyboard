@@ -144,6 +144,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.67136177007299269" green="0.90291400547445255" blue="0.64407504562043794" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="320" height="220"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="V2z-vd-987">
@@ -162,7 +163,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.8542427007299267" green="0.86245437956204385" blue="0.34794137773722628" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.67136177007299269" green="0.90291400547445255" blue="0.64407504562043794" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="320" height="44"/>
                                     </collectionViewCell>
                                 </cells>
