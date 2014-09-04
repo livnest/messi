@@ -55,6 +55,7 @@
     return cell;
 
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
@@ -72,6 +73,18 @@
             break;
     }
     return dataCount;
+}
+
+- (IBAction)MakeSubjectButton:(id)sender {
+    UIAlertView *Alert = [[UIAlertView alloc] initWithTitle:@"新規授業名" message:@"授業名を入力してください。" delegate:self cancelButtonTitle:@"キャンセル" otherButtonTitles:@"保存", nil];
+    [Alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [Alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        NSLog(@"%@",[[alertView textFieldAtIndex:0] text]);
+    }
 }
 
 @end
