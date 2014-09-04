@@ -46,7 +46,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
-    
+    // セルにデータをセット
     cell.textLabel.text = self.dataSourceSubject[indexPath.row];
     return cell;
 
@@ -73,8 +73,8 @@
     return dataCount;
 }
 
-//- (IBAction)MakeSubjectButton:(id)sender {
-//    // UITableViewの初期化
+- (IBAction)MakeSubjectButton:(id)sender {
+//    // UIAlertViewの初期化
 //    UIAlertView *Alert = [[UIAlertView alloc] initWithTitle:@"新規授業名"
 //                                                    message:@"授業名を入力してください。"
 //                                                   delegate:self
@@ -83,8 +83,9 @@
 //                          ];
 //    [Alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
 //    [Alert show];
-//}
-//
+    
+}
+
 //// AlertViewが終了した後
 //-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
 //    NSMutableArray *dataSourceSubject = [NSMutableArray array];
