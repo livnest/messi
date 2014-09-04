@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CaTabelViewController : UIViewController <UIAlertViewDelegate>
+@interface CaTabelViewController : UIViewController 
 
 - (IBAction)MakeSubjectButton:(id)sender;
 

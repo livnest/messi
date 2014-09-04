@@ -91,12 +91,21 @@
 		F13FF22E19AA481D004CB13E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F13FF22F19AA4867004CB13E /* NoteViewController.h */,
-				F13FF23019AA4867004CB13E /* NoteViewController.m */,
+				60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */,
+				60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */,
 				F13FF24819AB2D92004CB13E /* SelectNoteViewController.h */,
 				F13FF24919AB2D92004CB13E /* SelectNoteViewController.m */,
+				F13FF22F19AA4867004CB13E /* NoteViewController.h */,
+				F13FF23019AA4867004CB13E /* NoteViewController.m */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		F1C213AD19B8B0EB00544219 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		F1DCAC40197A8AF900C98311 = {
@@ -132,14 +141,13 @@
 		F1DCAC52197A8AF900C98311 /* CamBinder */ = {
 			isa = PBXGroup;
 			children = (
+				F1C213AD19B8B0EB00544219 /* View */,
 				F13FF22E19AA481D004CB13E /* ViewController */,
 				F1DCAC5B197A8AF900C98311 /* AppDelegate.h */,
 				F1DCAC5C197A8AF900C98311 /* AppDelegate.m */,
 				F1DCAC5E197A8AF900C98311 /* Main.storyboard */,
 				F1DCAC61197A8AF900C98311 /* ViewController.h */,
 				F1DCAC62197A8AF900C98311 /* ViewController.m */,
-				60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */,
-				60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */,
 				F1DCAC64197A8AF900C98311 /* Images.xcassets */,
 				F1DCAC53197A8AF900C98311 /* Supporting Files */,
 			);
