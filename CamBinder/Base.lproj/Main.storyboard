@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="4226" y="-1261"/>
         </scene>
-        <!--Select Note View Controller-->
+        <!--Select Note View Controller - 授業回選択-->
         <scene sceneID="oNW-5A-u2N">
             <objects>
                 <viewController id="HAc-rP-8BM" customClass="SelectNoteViewController" sceneMemberID="viewController">
@@ -113,7 +113,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mNA-u1-5eL"/>
+                    <navigationItem key="navigationItem" title="授業回選択" id="mNA-u1-5eL">
+                        <barButtonItem key="leftBarButtonItem" title="＜戻る" id="tNS-ZS-xJr"/>
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="8RA-b1-xAV"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="c54-TM-9Kr" kind="push" id="QwD-90-amF"/>
                     </connections>
