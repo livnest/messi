@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TqP-Yg-rW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4226" y="-1261"/>
+            <point key="canvasLocation" x="4231" y="-1261"/>
         </scene>
         <!--Select Note View Controller - 授業回選択-->
         <scene sceneID="oNW-5A-u2N">
