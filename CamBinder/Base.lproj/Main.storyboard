@@ -42,7 +42,7 @@
                                     <barButtonItem systemItem="add" id="YdH-ac-TDo">
                                         <connections>
                                             <action selector="MakeSubjectButton:" destination="W3x-hZ-6WX" id="WGT-KC-jFa"/>
-                                            <segue destination="xUD-om-bg8" kind="modal" id="go2-km-c2z"/>
+                                            <segue destination="xUD-om-bg8" kind="push" id="OOe-LC-Yde"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UO6-Rt-1SJ"/>
@@ -81,7 +81,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0SQ-Ox-FjY">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0SQ-Ox-FjY" id="fvz-8k-VsZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -93,6 +93,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BQV-kh-o7s"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN0-bv-ksN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
