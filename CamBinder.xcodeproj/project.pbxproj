@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */; };
+		F120D67419BA058C00D00369 /* AddSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67319BA058C00D00369 /* AddSubjectViewController.m */; };
 		F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13FF23019AA4867004CB13E /* NoteViewController.m */; };
-		F13FF24A19AB2D92004CB13E /* SelectNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13FF24919AB2D92004CB13E /* SelectNoteViewController.m */; };
 		F1DCAC4D197A8AF900C98311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4C197A8AF900C98311 /* Foundation.framework */; };
 		F1DCAC4F197A8AF900C98311 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */; };
 		F1DCAC51197A8AF900C98311 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC50197A8AF900C98311 /* UIKit.framework */; };
@@ -39,10 +39,10 @@
 /* Begin PBXFileReference section */
 		60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaTabelViewController.h; sourceTree = "<group>"; };
 		60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaTabelViewController.m; sourceTree = "<group>"; };
+		F120D67219BA058C00D00369 /* AddSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubjectViewController.h; sourceTree = "<group>"; };
+		F120D67319BA058C00D00369 /* AddSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubjectViewController.m; sourceTree = "<group>"; };
 		F13FF22F19AA4867004CB13E /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
 		F13FF23019AA4867004CB13E /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
-		F13FF24819AB2D92004CB13E /* SelectNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectNoteViewController.h; sourceTree = "<group>"; };
-		F13FF24919AB2D92004CB13E /* SelectNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectNoteViewController.m; sourceTree = "<group>"; };
 		F1DCAC49197A8AF900C98311 /* CamBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DCAC4C197A8AF900C98311 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,10 +93,10 @@
 			children = (
 				60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */,
 				60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */,
-				F13FF24819AB2D92004CB13E /* SelectNoteViewController.h */,
-				F13FF24919AB2D92004CB13E /* SelectNoteViewController.m */,
 				F13FF22F19AA4867004CB13E /* NoteViewController.h */,
 				F13FF23019AA4867004CB13E /* NoteViewController.m */,
+				F120D67219BA058C00D00369 /* AddSubjectViewController.h */,
+				F120D67319BA058C00D00369 /* AddSubjectViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -281,9 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */,
+				F120D67419BA058C00D00369 /* AddSubjectViewController.m in Sources */,
 				F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */,
 				F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */,
-				F13FF24A19AB2D92004CB13E /* SelectNoteViewController.m in Sources */,
 				F1DCAC59197A8AF900C98311 /* main.m in Sources */,
 				60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */,
 			);
