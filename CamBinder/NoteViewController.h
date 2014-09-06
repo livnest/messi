@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NoteViewController : UIViewController
+@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *noteView;
+@property (nonatomic, strong) NSArray *dataSourceNote;
 
 @end
