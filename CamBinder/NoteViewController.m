@@ -75,6 +75,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [_objectNote addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", row + 1]];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     [self.noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 #pragma mark - UITableViewDataSource delegate methods
