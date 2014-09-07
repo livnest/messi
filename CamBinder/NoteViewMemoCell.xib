@@ -13,20 +13,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Memo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G1z-4x-oDI">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Memo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G1z-4x-oDI">
                         <rect key="frame" x="20" y="5" width="280" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9.5.2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgH-5K-5gw">
-                        <rect key="frame" x="20" y="38" width="280" height="11"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.5.2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgH-5K-5gw">
+                        <rect key="frame" x="20" y="39" width="280" height="10"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Qx9-Mx-EpG"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
+                        <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="QgH-5K-5gw" secondAttribute="trailing" constant="20" id="GjX-Oo-tc3"/>
+                    <constraint firstItem="G1z-4x-oDI" firstAttribute="leading" secondItem="w3u-AU-S49" secondAttribute="leading" constant="20" id="II0-hs-Vhl"/>
+                    <constraint firstAttribute="bottom" secondItem="G1z-4x-oDI" secondAttribute="bottom" constant="5" id="NtV-lw-Mp4"/>
+                    <constraint firstAttribute="bottom" secondItem="QgH-5K-5gw" secondAttribute="bottom" id="X05-2f-7nB"/>
+                    <constraint firstItem="QgH-5K-5gw" firstAttribute="leading" secondItem="w3u-AU-S49" secondAttribute="leading" constant="20" id="YOo-t0-YiY"/>
+                    <constraint firstAttribute="trailing" secondItem="G1z-4x-oDI" secondAttribute="trailing" constant="20" id="rer-oB-3GM"/>
+                    <constraint firstItem="G1z-4x-oDI" firstAttribute="top" secondItem="w3u-AU-S49" secondAttribute="top" constant="5" id="s1a-Lp-a0O"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="labelMemoDate" destination="QgH-5K-5gw" id="omK-OL-nUl"/>

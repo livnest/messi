@@ -13,7 +13,10 @@
 
 static NSInteger const NoteViewControllerTableSection = 1;
 
-@interface NoteViewController ()
+@interface NoteViewController () {
+    NSMutableArray *_objectNote;
+    NSMutableArray *_objectDate;
+}
 
 @end
 
@@ -67,9 +70,11 @@ static NSInteger const NoteViewControllerTableSection = 1;
     if (!_objectNote) {
         _objectNote = [[NSMutableArray alloc] init];
     }
-    NSLog(@"配列の追加:%ld個目", [_objectNote count] + 1);
-    [_objectNote addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", [_objectNote count] + 1]];
-    [self.noteView reloadData];
+    NSInteger row = [_objectNote count];
+    NSLog(@"配列の追加:%ld個目", row + 1);
+    [_objectNote addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", row + 1]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
 }
 
 #pragma mark - UITableViewDataSource delegate methods
@@ -89,7 +94,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     static NSString *CellIdentifier = @"MemoCell";
     MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
     cell.textMemo.text = _objectNote[indexPath.row];
     cell.labelMemoDate.text = _objectDate[indexPath.row];
     

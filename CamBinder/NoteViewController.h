@@ -12,7 +12,4 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *noteView;
 
-@property (strong, nonatomic) NSMutableArray *objectNote;
-@property (strong, nonatomic) NSMutableArray *objectDate;
-
 @end
