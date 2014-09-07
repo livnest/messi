@@ -10,6 +10,4 @@
 
 @interface CaTabelViewController : UIViewController 
 
-- (IBAction)MakeSubjectButton:(id)sender;
-
 @end
