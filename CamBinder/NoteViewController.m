@@ -14,8 +14,9 @@
 static NSInteger const NoteViewControllerTableSection = 1;
 
 @interface NoteViewController () {
-    NSMutableArray *_objectNote;
-    NSMutableArray *_objectDate;
+    NSMutableArray *_objectText;
+    NSMutableArray *_objectIage;
+    NSMutableArray *_object;
 }
 
 @end
@@ -67,13 +68,22 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)addMemo:(id)sender
 {
-    if (!_objectNote) {
-        _objectNote = [[NSMutableArray alloc] init];
+    if (!_object) {
+        _object = [[NSMutableArray alloc] init];
     }
-    NSInteger row = [_objectNote count];
+    if (!_objectText) {
+        _objectText = [[NSMutableArray alloc] init];
+    }
+    NSInteger row = [_objectText count];
     NSLog(@"配列の追加:%ld個目", row + 1);
-    [_objectNote addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", row + 1]];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [_objectText addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", row + 1]];
+    NSString *text = _objectText[row];
+    NSDate *memoDate = [NSDate date];
+    NSDictionary *memoDictionary = @{@"text": text, @"date": memoDate};
+    
+    NSInteger rowData = [_object count];
+    [_object insertObject:memoDictionary atIndex:rowData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowData inSection:0];
     [self.noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
@@ -82,7 +92,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objectNote.count;
+    return _object.count;
 }
 
 // tableに表示するセクションの数
@@ -95,8 +105,14 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     static NSString *CellIdentifier = @"MemoCell";
     MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.textMemo.text = _objectNote[indexPath.row];
-    cell.labelMemoDate.text = _objectDate[indexPath.row];
+    
+    NSDictionary *dictMemo = _object[indexPath.row];
+    cell.textMemo.text = dictMemo[@"text"];
+    
+    NSDate *dateMemo = dictMemo[@"date"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
+    cell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
     
     /*
     UITableViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -116,6 +132,4 @@ static NSInteger const NoteViewControllerTableSection = 1;
     return [MemoNoteViewCell rowHeight];
 }
 
-- (IBAction)addNote:(UIBarButtonItem *)sender {
-}
 @end
