@@ -13,18 +13,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wJ6-oe-Vtt">
+                        <rect key="frame" x="10" y="2" width="310" height="45"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.67136177009999998" green="0.90291400550000001" blue="0.64407504559999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </imageView>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Memo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G1z-4x-oDI">
-                        <rect key="frame" x="20" y="5" width="280" height="39"/>
+                        <rect key="frame" x="20" y="2" width="290" height="45"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.5.2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgH-5K-5gw">
-                        <rect key="frame" x="20" y="39" width="280" height="10"/>
+                        <rect key="frame" x="270" y="32" width="45" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="10" id="Qx9-Mx-EpG"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -32,15 +34,19 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="QgH-5K-5gw" secondAttribute="trailing" constant="20" id="GjX-Oo-tc3"/>
-                    <constraint firstItem="G1z-4x-oDI" firstAttribute="leading" secondItem="w3u-AU-S49" secondAttribute="leading" constant="20" id="II0-hs-Vhl"/>
-                    <constraint firstAttribute="bottom" secondItem="G1z-4x-oDI" secondAttribute="bottom" constant="5" id="NtV-lw-Mp4"/>
-                    <constraint firstAttribute="bottom" secondItem="QgH-5K-5gw" secondAttribute="bottom" id="X05-2f-7nB"/>
-                    <constraint firstItem="QgH-5K-5gw" firstAttribute="leading" secondItem="w3u-AU-S49" secondAttribute="leading" constant="20" id="YOo-t0-YiY"/>
-                    <constraint firstAttribute="trailing" secondItem="G1z-4x-oDI" secondAttribute="trailing" constant="20" id="rer-oB-3GM"/>
-                    <constraint firstItem="G1z-4x-oDI" firstAttribute="top" secondItem="w3u-AU-S49" secondAttribute="top" constant="5" id="s1a-Lp-a0O"/>
+                    <constraint firstAttribute="bottom" secondItem="QgH-5K-5gw" secondAttribute="bottom" constant="2" id="33o-iO-Ubs"/>
+                    <constraint firstAttribute="trailing" secondItem="QgH-5K-5gw" secondAttribute="trailing" constant="5" id="7Fc-mr-p1j"/>
+                    <constraint firstAttribute="trailing" secondItem="wJ6-oe-Vtt" secondAttribute="trailing" id="Fbr-gP-wrD"/>
+                    <constraint firstAttribute="bottom" secondItem="wJ6-oe-Vtt" secondAttribute="bottom" constant="2" id="Gh1-4D-cys"/>
+                    <constraint firstAttribute="trailing" secondItem="G1z-4x-oDI" secondAttribute="trailing" constant="10" id="MLO-Pd-SiR"/>
+                    <constraint firstItem="wJ6-oe-Vtt" firstAttribute="leading" secondItem="w3u-AU-S49" secondAttribute="leading" constant="10" id="Onl-aI-vhB"/>
+                    <constraint firstItem="G1z-4x-oDI" firstAttribute="leading" secondItem="w3u-AU-S49" secondAttribute="leading" constant="20" id="TEr-eL-3kt"/>
+                    <constraint firstItem="wJ6-oe-Vtt" firstAttribute="top" secondItem="w3u-AU-S49" secondAttribute="top" constant="2" id="bBc-KT-uBO"/>
+                    <constraint firstAttribute="bottom" secondItem="G1z-4x-oDI" secondAttribute="bottom" constant="2" id="pjx-7U-7B5"/>
+                    <constraint firstItem="G1z-4x-oDI" firstAttribute="top" secondItem="w3u-AU-S49" secondAttribute="top" constant="2" id="vSn-3y-f3U"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="labelMemoDate" destination="QgH-5K-5gw" id="omK-OL-nUl"/>
                 <outlet property="textMemo" destination="G1z-4x-oDI" id="YRz-L6-iNC"/>
