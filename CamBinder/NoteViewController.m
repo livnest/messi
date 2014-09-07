@@ -36,10 +36,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
     self.noteView.delegate = self;
     self.noteView.dataSource = self;
     
-    self.dataSourceNote = @[@"memo1",@"memo2",@"memo3"];
+//    self.dataSourceNote = @[@"memo1",@"memo2",@"memo3"];
+    
     // カスタムセルをセット
-    UINib *nib = [UINib nibWithNibName:NoteViewMemoCellIdentifier bundle:nil];
-    [self.noteView registerNib:nib forCellReuseIdentifier:@"MemoCell"];
+    UINib *nibMemo = [UINib nibWithNibName:NoteViewMemoCellIdentifier bundle:nil];
+    UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
+    [self.noteView registerNib:nibMemo forCellReuseIdentifier:@"MemoCell"];
+    [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,22 +62,37 @@ static NSInteger const NoteViewControllerTableSection = 1;
 }
 */
 
+- (IBAction)addMemo:(id)sender
+{
+    if (!_objectNote) {
+        _objectNote = [[NSMutableArray alloc] init];
+    }
+    NSLog(@"配列の追加:%ld個目", [_objectNote count] + 1);
+    [_objectNote addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", [_objectNote count] + 1]];
+    [self.noteView reloadData];
+}
+
 #pragma mark - UITableViewDataSource delegate methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataSourceNote.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _objectNote.count;
 }
 
 // tableに表示するセクションの数
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return NoteViewControllerTableSection;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MemoCell";
-    MemoNoteViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    memoCell.textMemo.text = self.dataSourceNote[indexPath.row];
+    MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    cell.textMemo.text = _objectNote[indexPath.row];
+    cell.labelMemoDate.text = _objectDate[indexPath.row];
+    
     /*
     UITableViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!memoCell) {
@@ -82,7 +100,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
      memoCell.textLabel.text = self.dataSourceNote[indexPath.row];
      */
-    return memoCell;
+    
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate methods
@@ -92,4 +111,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
     return [MemoNoteViewCell rowHeight];
 }
 
+- (IBAction)addNote:(UIBarButtonItem *)sender {
+}
 @end

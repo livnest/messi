@@ -11,6 +11,8 @@
 @interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *noteView;
-@property (nonatomic, strong) NSArray *dataSourceNote;
+
+@property (strong, nonatomic) NSMutableArray *objectNote;
+@property (strong, nonatomic) NSMutableArray *objectDate;
 
 @end

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-static  NSString * const NoteViewMemoCellIdentifier = @"NoteViewMemoCell";
+static NSString * const NoteViewMemoCellIdentifier = @"NoteViewMemoCell";
+static NSString * const NoteViewImageCellIdentifier = @"NoteViewImageCell";
 
 @interface NoteViewConst : NSObject
 
