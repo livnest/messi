@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */; };
+		B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9419BDA342009346F3 /* AddNewSubject.m */; };
+		B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */; };
+		B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */; };
 		F120D67419BA058C00D00369 /* AddSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67319BA058C00D00369 /* AddSubjectViewController.m */; };
 		F120D67719BA101A00D00369 /* NoteViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67619BA101A00D00369 /* NoteViewImageCell.xib */; };
 		F120D67919BA102B00D00369 /* NoteViewMemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */; };
@@ -43,6 +46,12 @@
 /* Begin PBXFileReference section */
 		60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaTabelViewController.h; sourceTree = "<group>"; };
 		60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaTabelViewController.m; sourceTree = "<group>"; };
+		B352BB9319BDA342009346F3 /* AddNewSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSubject.h; sourceTree = "<group>"; };
+		B352BB9419BDA342009346F3 /* AddNewSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSubject.m; sourceTree = "<group>"; };
+		B352BB9619BDA7F6009346F3 /* AddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSubjectViewController.h; sourceTree = "<group>"; };
+		B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSubjectViewController.m; sourceTree = "<group>"; };
+		B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAddNewSubjectViewController.h; sourceTree = "<group>"; };
+		B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecAddNewSubjectViewController.m; sourceTree = "<group>"; };
 		F120D67219BA058C00D00369 /* AddSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubjectViewController.h; sourceTree = "<group>"; };
 		F120D67319BA058C00D00369 /* AddSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubjectViewController.m; sourceTree = "<group>"; };
 		F120D67619BA101A00D00369 /* NoteViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewImageCell.xib; sourceTree = "<group>"; };
@@ -99,6 +108,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B352BB9219BDA2B0009346F3 /* AddNewSubject */ = {
+			isa = PBXGroup;
+			children = (
+				B352BB9319BDA342009346F3 /* AddNewSubject.h */,
+				B352BB9419BDA342009346F3 /* AddNewSubject.m */,
+				B352BB9619BDA7F6009346F3 /* AddNewSubjectViewController.h */,
+				B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */,
+				B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */,
+				B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */,
+			);
+			name = AddNewSubject;
+			sourceTree = "<group>";
+		};
 		F120D67519BA096500D00369 /* NoteViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +195,7 @@
 		F1DCAC52197A8AF900C98311 /* CamBinder */ = {
 			isa = PBXGroup;
 			children = (
+				B352BB9219BDA2B0009346F3 /* AddNewSubject */,
 				F120D68019BA147900D00369 /* Const */,
 				F13FF22E19AA481D004CB13E /* ViewController */,
 				F1C213AD19B8B0EB00544219 /* View */,
@@ -316,6 +339,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */,
+				B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */,
 				F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */,
 				F120D67419BA058C00D00369 /* AddSubjectViewController.m in Sources */,
 				F120D67F19BA121500D00369 /* ImageNoteViewCell.m in Sources */,
@@ -324,6 +349,7 @@
 				F120D67C19BA11C800D00369 /* MemoNoteViewCell.m in Sources */,
 				F1DCAC59197A8AF900C98311 /* main.m in Sources */,
 				60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */,
+				B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
