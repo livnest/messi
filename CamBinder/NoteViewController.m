@@ -12,6 +12,7 @@
 #import "NoteViewConst.h"
 
 static NSInteger const NoteViewControllerTableSection = 1;
+#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
 @interface NoteViewController () {
     NSMutableArray *_objectText;
@@ -47,6 +48,23 @@ static NSInteger const NoteViewControllerTableSection = 1;
     UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibMemo forCellReuseIdentifier:@"MemoCell"];
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
+    
+    // TableViewの位置をキーボードの上部に移動するための準備
+    [self.scrollView setDelegate:self];
+    [self.scrollView setScrollEnabled:NO];
+    [self.scrollView setDelaysContentTouches:NO];
+    // キーボード表示の通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardDidShowNotification object:nil];
+    // キーボード非表示の通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // スクロール範囲を設定
+    [self.scrollView setContentSize:CGSizeMake(WINDOW_SIZE.width, WINDOW_SIZE.height)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,6 +149,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     NSDictionary *dictMemo = _object[indexPath.row];
     // MemoをtextFieldにセット
     cell.textMemo.text = dictMemo[@"text"];
+    cell.textMemo.delegate = self;
     // Memoの追加日時をLabelにセット
     NSDate *dateMemo = dictMemo[@"date"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -153,6 +172,27 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [MemoNoteViewCell rowHeight];
+}
+
+#pragma mark - UITextFieldDelegate methods
+
+- (void)keyboardOn:(NSNotification *)notification
+{
+    NSDictionary *info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
+    [self.scrollView setContentOffset:scrollPoint animated:YES];
+}
+
+- (void)keyboardOff:(NSNotification *)notification
+{
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

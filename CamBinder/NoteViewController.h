@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *noteView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
