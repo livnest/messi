@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */; };
 		B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9419BDA342009346F3 /* AddNewSubject.m */; };
 		B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */; };
 		B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */; };
@@ -43,8 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaTabelViewController.h; sourceTree = "<group>"; };
-		60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaTabelViewController.m; sourceTree = "<group>"; };
 		B352BB9319BDA342009346F3 /* AddNewSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSubject.h; sourceTree = "<group>"; };
 		B352BB9419BDA342009346F3 /* AddNewSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSubject.m; sourceTree = "<group>"; };
 		B352BB9619BDA7F6009346F3 /* AddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSubjectViewController.h; sourceTree = "<group>"; };
@@ -142,8 +139,6 @@
 				B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */,
 				B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */,
 				B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */,
-				60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */,
-				60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */,
 				F13FF22F19AA4867004CB13E /* NoteViewController.h */,
 				F13FF23019AA4867004CB13E /* NoteViewController.m */,
 			);
@@ -342,7 +337,6 @@
 				F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */,
 				F120D67C19BA11C800D00369 /* MemoNoteViewCell.m in Sources */,
 				F1DCAC59197A8AF900C98311 /* main.m in Sources */,
-				60E34FCE19A4CF9A00E49CFC /* CaTabelViewController.m in Sources */,
 				B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
