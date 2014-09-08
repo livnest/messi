@@ -51,6 +51,7 @@
 		B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSubjectViewController.m; sourceTree = "<group>"; };
 		B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAddNewSubjectViewController.h; sourceTree = "<group>"; };
 		B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecAddNewSubjectViewController.m; sourceTree = "<group>"; };
+		B352BB9C19BDEDB8009346F3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F120D67619BA101A00D00369 /* NoteViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewImageCell.xib; sourceTree = "<group>"; };
 		F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewMemoCell.xib; sourceTree = "<group>"; };
 		F120D67A19BA11C800D00369 /* MemoNoteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoNoteViewCell.h; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 				F1DCAC5B197A8AF900C98311 /* AppDelegate.h */,
 				F1DCAC5C197A8AF900C98311 /* AppDelegate.m */,
 				F1DCAC5E197A8AF900C98311 /* Main.storyboard */,
+				B352BB9C19BDEDB8009346F3 /* ViewController.h */,
 				F1DCAC62197A8AF900C98311 /* ViewController.m */,
 				F1DCAC64197A8AF900C98311 /* Images.xcassets */,
 				F1DCAC53197A8AF900C98311 /* Supporting Files */,
