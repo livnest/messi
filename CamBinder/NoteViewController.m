@@ -66,26 +66,35 @@ static NSInteger const NoteViewControllerTableSection = 1;
 }
 */
 
+#pragma mark - UITableViewDataSource AddObject Method
+
+- (IBAction)addMemo:(id)sender
+{
+    [self addObjectMemo];
+}
+
 - (void)addObjectMemo
 {
-    // 配列が作られていない場合、新規作成
+    // 配列が作られていない場合、配列を初期化
     if (!_object) {
         _object = [[NSMutableArray alloc] init];
     }
     if (!_objectText) {
         _objectText = [[NSMutableArray alloc] init];
     }
+    // テキストの配列を追加
+    NSInteger rowText = [_objectText count];
+    NSLog(@"配列の追加:%ld個目", rowText + 1);
+    [_objectText addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", rowText + 1]];
+    NSString *textMemo = _objectText[rowText];
+    NSDate *dateMemo = [NSDate date];
+    NSDictionary *memoDictionary = @{@"text": textMemo, @"date": dateMemo};
     
-    NSInteger row = [_objectText count];
-    NSLog(@"配列の追加:%ld個目", row + 1);
-    [_objectText addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", row + 1]];
-    NSString *text = _objectText[row];
-    NSDate *memoDate = [NSDate date];
-    NSDictionary *memoDictionary = @{@"text": text, @"date": memoDate};
-    // Memoセルの配列を追加
-    NSInteger rowData = [_object count];
-    [_object insertObject:memoDictionary atIndex:rowData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowData inSection:0];
+    // テキストと日時をMemoセルの配列に追加
+    NSInteger rowObj = [_object count];
+    [_object insertObject:memoDictionary atIndex:rowObj];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowObj inSection:0];
+    // noteViewにMemoセルを挿入するメソッドを実行
     [self addMemoCellForRowAtIndexPath:indexPath];
 }
 
@@ -112,8 +121,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // セルの初期化
+    /*
+     *オブジェクトがMemoかImageの分岐の実装が必要
+     */
     static NSString *CellIdentifier = @"MemoCell";
     MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     // Memoセルの配列をセット
     NSDictionary *dictMemo = _object[indexPath.row];
     // MemoをtextFieldにセット
@@ -140,11 +153,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [MemoNoteViewCell rowHeight];
-}
-
-- (IBAction)addMemo:(id)sender
-{
-    [self addObjectMemo];
 }
 
 @end
