@@ -54,9 +54,9 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
     // キーボード表示の通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardWillShowNotification object:nil];
     // キーボード非表示の通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff) name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidLayoutSubviews
@@ -149,7 +149,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
     NSDictionary *dictMemo = _object[indexPath.row];
     // MemoをtextFieldにセット
     cell.textMemo.text = dictMemo[@"text"];
-    cell.textMemo.delegate = self;
     // Memoの追加日時をLabelにセット
     NSDate *dateMemo = dictMemo[@"date"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -178,15 +177,31 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (void)keyboardOn:(NSNotification *)notification
 {
+    // キーボードのサイズ
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    /*ScrollViewを使用した移動
     CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
     [self.scrollView setContentOffset:scrollPoint animated:YES];
+     */
+    // キーボード表示アニメーションのduration
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    // viewのアニメーション
+    [UIView animateWithDuration:duration animations:^{
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height);
+        self.view.transform = transform;
+    }completion:NULL];
 }
 
 - (void)keyboardOff:(NSNotification *)notification
 {
-    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+//    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    __weak typeof (self) _self = self;
+    [UIView animateWithDuration:duration animations:^{
+        _self.view.transform = CGAffineTransformIdentity;
+    }completion:NULL];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
