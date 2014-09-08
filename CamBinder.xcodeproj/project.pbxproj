@@ -11,7 +11,6 @@
 		B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9419BDA342009346F3 /* AddNewSubject.m */; };
 		B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */; };
 		B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */; };
-		F120D67419BA058C00D00369 /* AddSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67319BA058C00D00369 /* AddSubjectViewController.m */; };
 		F120D67719BA101A00D00369 /* NoteViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67619BA101A00D00369 /* NoteViewImageCell.xib */; };
 		F120D67919BA102B00D00369 /* NoteViewMemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */; };
 		F120D67C19BA11C800D00369 /* MemoNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67B19BA11C800D00369 /* MemoNoteViewCell.m */; };
@@ -52,8 +51,6 @@
 		B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSubjectViewController.m; sourceTree = "<group>"; };
 		B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAddNewSubjectViewController.h; sourceTree = "<group>"; };
 		B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecAddNewSubjectViewController.m; sourceTree = "<group>"; };
-		F120D67219BA058C00D00369 /* AddSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubjectViewController.h; sourceTree = "<group>"; };
-		F120D67319BA058C00D00369 /* AddSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubjectViewController.m; sourceTree = "<group>"; };
 		F120D67619BA101A00D00369 /* NoteViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewImageCell.xib; sourceTree = "<group>"; };
 		F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewMemoCell.xib; sourceTree = "<group>"; };
 		F120D67A19BA11C800D00369 /* MemoNoteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoNoteViewCell.h; sourceTree = "<group>"; };
@@ -74,7 +71,6 @@
 		F1DCAC5B197A8AF900C98311 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F1DCAC5C197A8AF900C98311 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F1DCAC5F197A8AF900C98311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F1DCAC61197A8AF900C98311 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F1DCAC62197A8AF900C98311 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F1DCAC64197A8AF900C98311 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1DCAC6A197A8AF900C98311 /* CamBinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamBinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,10 +109,6 @@
 			children = (
 				B352BB9319BDA342009346F3 /* AddNewSubject.h */,
 				B352BB9419BDA342009346F3 /* AddNewSubject.m */,
-				B352BB9619BDA7F6009346F3 /* AddNewSubjectViewController.h */,
-				B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */,
-				B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */,
-				B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */,
 			);
 			name = AddNewSubject;
 			sourceTree = "<group>";
@@ -145,12 +137,14 @@
 		F13FF22E19AA481D004CB13E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B352BB9619BDA7F6009346F3 /* AddNewSubjectViewController.h */,
+				B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */,
+				B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */,
+				B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */,
 				60E34FCC19A4CF9A00E49CFC /* CaTabelViewController.h */,
 				60E34FCD19A4CF9A00E49CFC /* CaTabelViewController.m */,
 				F13FF22F19AA4867004CB13E /* NoteViewController.h */,
 				F13FF23019AA4867004CB13E /* NoteViewController.m */,
-				F120D67219BA058C00D00369 /* AddSubjectViewController.h */,
-				F120D67319BA058C00D00369 /* AddSubjectViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -203,7 +197,6 @@
 				F1DCAC5B197A8AF900C98311 /* AppDelegate.h */,
 				F1DCAC5C197A8AF900C98311 /* AppDelegate.m */,
 				F1DCAC5E197A8AF900C98311 /* Main.storyboard */,
-				F1DCAC61197A8AF900C98311 /* ViewController.h */,
 				F1DCAC62197A8AF900C98311 /* ViewController.m */,
 				F1DCAC64197A8AF900C98311 /* Images.xcassets */,
 				F1DCAC53197A8AF900C98311 /* Supporting Files */,
@@ -342,7 +335,6 @@
 				B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */,
 				B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */,
 				F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */,
-				F120D67419BA058C00D00369 /* AddSubjectViewController.m in Sources */,
 				F120D67F19BA121500D00369 /* ImageNoteViewCell.m in Sources */,
 				F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */,
 				F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */,
