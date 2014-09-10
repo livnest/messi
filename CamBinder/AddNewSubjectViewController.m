@@ -16,7 +16,7 @@
 
 @implementation AddNewSubjectViewController
 
-@synthesize tasks = _tasks;
+//@synthesize tasks = _tasks;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -49,14 +51,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddTaskSegue"]) {
-        UINavigationController *navCon = segue.destinationViewController;
-        SecAddNewSubjectViewController *addNewSubjectViewController = [navCon.viewControllers objectAtIndex:0];
-        addNewSubjectViewController.SubjectViewController = self;
-    }
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -72,18 +66,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"NotDoneTaskCell";
+    static NSString *CellIdentifier = @"SubjectCell";
     
-    AddNewSubject *currentTask  = [self.tasks objectAtIndex:indexPath.row];
+    //AddNewSubject *currentTask  = [self.tasks objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     
-    cell.textLabel.text = currentTask.name;
+    cell.textLabel.text = _tasks[indexPath.row];
     
     return cell;
 }
@@ -152,6 +146,44 @@
 
 - (void)editButtonPressed:(id)sender {
     self.editing = !self.editing;
+}
+
+- (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSString *)item
+{
+    NSLog(@"SecAddOjbectViewControllerDidDone");
+    
+    // 配列を受け取って挿入
+    if (!_tasks) {
+        _tasks = [[NSMutableArray alloc] init];
+    }
+    [_tasks insertObject:item atIndex:0];
+    // セルを挿入
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    // 画面を閉じる
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)secAddNewSubjectDidCancel:(SecAddNewSubjectViewController *)contoller
+{
+    NSLog(@"SecAddOjbectViewControllerDidCancel");
+    
+    // 画面を閉じる
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddTaskSegue"])
+    {
+        /*
+         UINavigationController *navCon = segue.destinationViewController;
+         SecAddNewSubjectViewController *addNewSubjectViewController = [navCon.viewControllers objectAtIndex:0];
+         addNewSubjectViewController.SubjectViewController = self;
+         */
+        
+        SecAddNewSubjectViewController *secAddNewSubjectViewController = (SecAddNewSubjectViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        secAddNewSubjectViewController.delegate = self;
+    }
 }
 
 @end

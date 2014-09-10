@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Add New Subject View Controller - 講義-->
+        <!--Add New Subject View Controller - 講義一覧-->
         <scene sceneID="Aqd-k9-ao9">
             <objects>
                 <tableViewController id="AF1-Mr-yS8" customClass="AddNewSubjectViewController" sceneMemberID="viewController">
@@ -28,7 +28,7 @@
                             <outlet property="delegate" destination="AF1-Mr-yS8" id="R5G-zQ-5Tq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="講義" id="wcJ-XX-Yon">
+                    <navigationItem key="navigationItem" title="講義一覧" id="wcJ-XX-Yon">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="e5h-HM-Ads">
                             <connections>
                                 <action selector="editButtonPressed:" destination="AF1-Mr-yS8" id="y7Y-3x-3KB"/>
@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="4313" y="-1961"/>
         </scene>
-        <!--Note View Controller - 授業名-->
+        <!--Note View Controller - 講義名-->
         <scene sceneID="jqQ-yc-ob8">
             <objects>
                 <viewController id="c54-TM-9Kr" customClass="NoteViewController" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="授業名" id="UdT-fA-ZsB">
+                    <navigationItem key="navigationItem" title="講義名" id="UdT-fA-ZsB">
                         <barButtonItem key="rightBarButtonItem" title="選択" id="jk4-il-5bQ"/>
                     </navigationItem>
                     <connections>
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKY-OM-mJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4822" y="-1243"/>
+            <point key="canvasLocation" x="4792" y="-1243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ndk-Rk-oA5">
