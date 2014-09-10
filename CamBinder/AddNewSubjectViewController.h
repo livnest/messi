@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNewSubjectViewController : UITableViewController
+@interface AddNewSubjectViewController : UITableViewController <UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *tasks;
 

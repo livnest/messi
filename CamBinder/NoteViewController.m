@@ -49,10 +49,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.noteView registerNib:nibMemo forCellReuseIdentifier:@"MemoCell"];
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
     
+    /* スクロールビューを利用したTableViewの上昇
     // TableViewの位置をキーボードの上部に移動するための準備
     [self.scrollView setDelegate:self];
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
+     */
+     
     // キーボード表示の通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardWillShowNotification object:nil];
     // キーボード非表示の通知
@@ -88,10 +91,10 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)addMemo:(id)sender
 {
-    [self addObjectMemo];
+    [self addObjectMemo:_addTextMemo.text];
 }
 
-- (void)addObjectMemo
+- (void)addObjectMemo:(NSString *)textField
 {
     // 配列が作られていない場合、配列を初期化
     if (!_object) {
@@ -102,8 +105,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
     // テキストの配列を追加
     NSInteger rowText = [_objectText count];
-    NSLog(@"配列の追加:%ld個目", rowText + 1);
-    [_objectText addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", rowText + 1]];
+    NSLog(@"%ld:「%@」", rowText + 1, textField);
+    [_objectText addObject:[[NSString alloc] initWithFormat:@"%@", textField]];
     NSString *textMemo = _objectText[rowText];
     NSDate *dateMemo = [NSDate date];
     NSDictionary *memoDictionary = @{@"text": textMemo, @"date": dateMemo};
@@ -180,10 +183,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // キーボードのサイズ
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
     /*ScrollViewを使用した移動
     CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
     [self.scrollView setContentOffset:scrollPoint animated:YES];
      */
+    
     // キーボード表示アニメーションのduration
     NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     // viewのアニメーション
