@@ -7,8 +7,6 @@
 //
 
 #import "AddNewSubjectViewController.h"
-#import "AddNewSubject.h"
-#import "SecAddNewSubjectViewController.h"
 
 @interface AddNewSubjectViewController ()
 
