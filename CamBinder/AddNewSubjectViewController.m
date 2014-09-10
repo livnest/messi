@@ -193,7 +193,7 @@
     [super setEditing:editing animated:YES];
     
     if(editing){
-        self.editButtonItem.title = @"完了";
+        self.editButtonItem.title = @"キャンセル";
     }else{
         self.editButtonItem.title = @"編集";
     }
