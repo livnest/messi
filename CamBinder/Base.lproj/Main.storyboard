@@ -13,11 +13,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LD4-1D-xTu">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="LD4-1D-xTu">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LD4-1D-xTu" id="Ulz-Or-yVD">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -40,6 +40,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="c54-TM-9Kr" kind="push" identifier="pushNoteView" id="saM-UY-pbt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cS2-hx-2Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +70,7 @@
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -98,7 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPd-Yb-hyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4771" y="-1961"/>
+            <point key="canvasLocation" x="4313" y="-1961"/>
         </scene>
         <!--Note View Controller - 授業名-->
         <scene sceneID="jqQ-yc-ob8">
@@ -113,18 +116,30 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bv9-s0-CvD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjW-6O-FRc">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjW-6O-FRc">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <barButtonItem systemItem="organize" id="hN4-d5-Fb8"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4Xm-Ri-QJq"/>
                                     <barButtonItem systemItem="camera" id="Nl7-ib-uoG"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="g4m-yF-nk9"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="h7N-dH-a6n"/>
+                                    <barButtonItem style="plain" id="0XL-xK-Gtc">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="PnP-MG-ZmS">
+                                            <rect key="frame" x="56" y="7" width="207" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="c54-TM-9Kr" id="qsn-Gm-vXd"/>
+                                            </connections>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XGP-U0-9su"/>
                                     <barButtonItem systemItem="compose" id="25l-LE-Ic9">
                                         <connections>
                                             <action selector="addMemo:" destination="c54-TM-9Kr" id="Hv7-Ap-qwK"/>
@@ -139,12 +154,13 @@
                         <barButtonItem key="rightBarButtonItem" title="選択" id="jk4-il-5bQ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTextMemo" destination="PnP-MG-ZmS" id="6fB-rH-elM"/>
                         <outlet property="noteView" destination="Bv9-s0-CvD" id="Cmc-Wl-V48"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKY-OM-mJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4771" y="-1243"/>
+            <point key="canvasLocation" x="4822" y="-1243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ndk-Rk-oA5">
@@ -180,7 +196,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frz-qO-Pwr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4313" y="-1961"/>
+            <point key="canvasLocation" x="3837" y="-1961"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

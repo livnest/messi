@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3E922494-2DEF-4B0B-8DCA-CB4D47CC024C</string>
+	<string>11C04989-3B58-4781-BB2B-9C0918D16D79</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CamBinder</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7012F9B6-57C9-4535-9F1C-29A6A1F70412</key>
+		<key>52E5EF49-8FAA-40D7-9945-C93FEDEB583D</key>
 		<string>https://github.com/livnest/messi.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CamBinder.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7012F9B6-57C9-4535-9F1C-29A6A1F70412</key>
+		<key>52E5EF49-8FAA-40D7-9945-C93FEDEB583D</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7012F9B6-57C9-4535-9F1C-29A6A1F70412</string>
+	<string>52E5EF49-8FAA-40D7-9945-C93FEDEB583D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7012F9B6-57C9-4535-9F1C-29A6A1F70412</string>
+			<string>52E5EF49-8FAA-40D7-9945-C93FEDEB583D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>messi</string>
 		</dict>

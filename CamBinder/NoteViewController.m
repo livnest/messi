@@ -12,6 +12,7 @@
 #import "NoteViewConst.h"
 
 static NSInteger const NoteViewControllerTableSection = 1;
+#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
 @interface NoteViewController () {
     NSMutableArray *_objectText;
@@ -47,6 +48,26 @@ static NSInteger const NoteViewControllerTableSection = 1;
     UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibMemo forCellReuseIdentifier:@"MemoCell"];
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
+    
+    /* スクロールビューを利用したTableViewの上昇
+    // TableViewの位置をキーボードの上部に移動するための準備
+    [self.scrollView setDelegate:self];
+    [self.scrollView setScrollEnabled:NO];
+    [self.scrollView setDelaysContentTouches:NO];
+     */
+     
+    // キーボード表示の通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardWillShowNotification object:nil];
+    // キーボード非表示の通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // スクロール範囲を設定
+    [self.scrollView setContentSize:CGSizeMake(WINDOW_SIZE.width, WINDOW_SIZE.height)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,26 +87,35 @@ static NSInteger const NoteViewControllerTableSection = 1;
 }
 */
 
-- (void)addObjectMemo
+#pragma mark - UITableViewDataSource AddObject Method
+
+- (IBAction)addMemo:(id)sender
 {
-    // 配列が作られていない場合、新規作成
+    [self addObjectMemo:_addTextMemo.text];
+}
+
+- (void)addObjectMemo:(NSString *)textField
+{
+    // 配列が作られていない場合、配列を初期化
     if (!_object) {
         _object = [[NSMutableArray alloc] init];
     }
     if (!_objectText) {
         _objectText = [[NSMutableArray alloc] init];
     }
+    // テキストの配列を追加
+    NSInteger rowText = [_objectText count];
+    NSLog(@"%ld:「%@」", rowText + 1, textField);
+    [_objectText addObject:[[NSString alloc] initWithFormat:@"%@", textField]];
+    NSString *textMemo = _objectText[rowText];
+    NSDate *dateMemo = [NSDate date];
+    NSDictionary *memoDictionary = @{@"text": textMemo, @"date": dateMemo};
     
-    NSInteger row = [_objectText count];
-    NSLog(@"配列の追加:%ld個目", row + 1);
-    [_objectText addObject:[[NSString alloc] initWithFormat:@"New memo :%ld", row + 1]];
-    NSString *text = _objectText[row];
-    NSDate *memoDate = [NSDate date];
-    NSDictionary *memoDictionary = @{@"text": text, @"date": memoDate};
-    // Memoセルの配列を追加
-    NSInteger rowData = [_object count];
-    [_object insertObject:memoDictionary atIndex:rowData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowData inSection:0];
+    // テキストと日時をMemoセルの配列に追加
+    NSInteger rowObj = [_object count];
+    [_object insertObject:memoDictionary atIndex:rowObj];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowObj inSection:0];
+    // noteViewにMemoセルを挿入するメソッドを実行
     [self addMemoCellForRowAtIndexPath:indexPath];
 }
 
@@ -112,8 +142,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // セルの初期化
+    /*
+     *オブジェクトがMemoかImageの分岐の実装が必要
+     */
     static NSString *CellIdentifier = @"MemoCell";
     MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     // Memoセルの配列をセット
     NSDictionary *dictMemo = _object[indexPath.row];
     // MemoをtextFieldにセット
@@ -142,9 +176,43 @@ static NSInteger const NoteViewControllerTableSection = 1;
     return [MemoNoteViewCell rowHeight];
 }
 
-- (IBAction)addMemo:(id)sender
+#pragma mark - UITextFieldDelegate methods
+
+- (void)keyboardOn:(NSNotification *)notification
 {
-    [self addObjectMemo];
+    // キーボードのサイズ
+    NSDictionary *info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    /*ScrollViewを使用した移動
+    CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
+    [self.scrollView setContentOffset:scrollPoint animated:YES];
+     */
+    
+    // キーボード表示アニメーションのduration
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    // viewのアニメーション
+    [UIView animateWithDuration:duration animations:^{
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height);
+        self.view.transform = transform;
+    }completion:NULL];
+}
+
+- (void)keyboardOff:(NSNotification *)notification
+{
+//    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    __weak typeof (self) _self = self;
+    [UIView animateWithDuration:duration animations:^{
+        _self.view.transform = CGAffineTransformIdentity;
+    }completion:NULL];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
