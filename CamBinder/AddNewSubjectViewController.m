@@ -38,6 +38,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.navigationItem.leftBarButtonItem = [self editButtonItem];
+    
+    self.editButtonItem.title = @"編集";
+    
     self.tasks = [[NSMutableArray alloc] init];
     
     [self.tableView reloadData];
@@ -182,6 +186,16 @@
         
         SecAddNewSubjectViewController *secAddNewSubjectViewController = (SecAddNewSubjectViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
         secAddNewSubjectViewController.delegate = self;
+    }
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:YES];
+    
+    if(editing){
+        self.editButtonItem.title = @"完了";
+    }else{
+        self.editButtonItem.title = @"編集";
     }
 }
 

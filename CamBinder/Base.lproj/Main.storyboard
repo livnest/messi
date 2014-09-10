@@ -29,11 +29,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="講義一覧" id="wcJ-XX-Yon">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="e5h-HM-Ads">
-                            <connections>
-                                <action selector="editButtonPressed:" destination="AF1-Mr-yS8" id="y7Y-3x-3KB"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="B8i-wi-Mow">
                             <connections>
                                 <segue destination="AKl-3H-cwK" kind="modal" identifier="AddTaskSegue" id="STq-YA-mxO"/>
@@ -84,12 +79,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="新規講義" id="66j-RG-piW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="egh-jc-823">
+                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="egh-jc-823">
                             <connections>
                                 <action selector="cacelButtonPressed:" destination="UA6-Ec-mH1" id="PTn-CQ-q1k"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="3xK-rh-jBa">
+                        <barButtonItem key="rightBarButtonItem" title="完了" style="done" id="3xK-rh-jBa">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="UA6-Ec-mH1" id="JKX-dc-EDE"/>
                             </connections>
