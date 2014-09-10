@@ -8,16 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-@class AddNewSubjectViewController;
+@protocol SecAddNewSubjectViewControllerDelegate;
+
+//@class AddNewSubjectViewController;
+
 
 @interface SecAddNewSubjectViewController : UITableViewController
 
-- (IBAction)cacelButtonPressed:(id)sender;
+@property (weak, nonatomic) id<SecAddNewSubjectViewControllerDelegate> delegate;
 
-- (IBAction)doneButtonPressed:(id)sender;
+//@property (nonatomic, strong) AddNewSubjectViewController *SubjectViewController;
 
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
+- (IBAction)cacelButtonPressed:(id)sender;
+- (IBAction)doneButtonPressed:(id)sender;
 
-@property (nonatomic, strong) AddNewSubjectViewController *SubjectViewController;
+@end
+
+@protocol SecAddNewSubjectViewControllerDelegate <NSObject>
+
+- (void)secAddNewSubjectDidCancel:(SecAddNewSubjectViewController *)controller;
+- (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSString *)item;
 
 @end

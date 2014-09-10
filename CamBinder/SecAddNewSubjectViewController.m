@@ -16,8 +16,8 @@
 
 @implementation SecAddNewSubjectViewController
 
-@synthesize nameField = _nameField;
-@synthesize  SubjectViewController = _SubjectViewController;
+//@synthesize nameField = _nameField;
+//@synthesize  SubjectViewController = _SubjectViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,17 +47,29 @@
 
 #pragma mark - IBActions
 
-- (void)cacelButtonPressed:(id)sender{
+
+- (void)cacelButtonPressed:(id)sender
+{
+    /*
     [self dismissModalViewControllerAnimated:YES];
+     */
+    
+    [self.delegate secAddNewSubjectDidCancel:self];
 }
 
-- (void)doneButtonPressed:(id)sender{
-    AddNewSubject *newSubject = [[AddNewSubject alloc] initWithName:self.nameField.text done:NO];
-    
+- (void)doneButtonPressed:(id)sender
+{
+    /*
+     AddNewSubject *newSubject = [[AddNewSubject alloc] initWithName:self.nameField.text done:NO];
     [self.SubjectViewController.tasks addObject:newSubject];
     
     [self dismissModalViewControllerAnimated:YES];
     
+     
     [self.SubjectViewController.tableView reloadData];
+     */
+    
+    [self.delegate secAddNewSubjectDidDone:self item:self.nameField.text];
 }
+     
 @end
