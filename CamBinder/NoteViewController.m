@@ -61,7 +61,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // キーボード非表示の通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff:) name:UIKeyboardWillHideNotification object:nil];
 }
-
+/*
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -69,7 +69,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // スクロール範囲を設定
     [self.scrollView setContentSize:CGSizeMake(WINDOW_SIZE.width, WINDOW_SIZE.height)];
 }
-
+*/
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -146,17 +146,17 @@ static NSInteger const NoteViewControllerTableSection = 1;
      *オブジェクトがMemoかImageの分岐の実装が必要
      */
     static NSString *CellIdentifier = @"MemoCell";
-    MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MemoNoteViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Memoセルの配列をセット
     NSDictionary *dictMemo = _object[indexPath.row];
     // MemoをtextFieldにセット
-    cell.textMemo.text = dictMemo[@"text"];
+    memoCell.textMemo.text = dictMemo[@"text"];
     // Memoの追加日時をLabelにセット
     NSDate *dateMemo = dictMemo[@"date"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
-    cell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
+    memoCell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
     
     /*
     UITableViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -166,7 +166,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
      memoCell.textLabel.text = self.dataSourceNote[indexPath.row];
      */
     
-    return cell;
+    return memoCell;
 }
 
 #pragma mark - UITableViewDelegate methods
