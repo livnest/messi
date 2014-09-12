@@ -12,7 +12,7 @@
 #import "NoteViewConst.h"
 
 static NSInteger const NoteViewControllerTableSection = 1;
-#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
+//#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
 @interface NoteViewController () {
     NSMutableArray *_objectText;
@@ -56,10 +56,23 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setDelaysContentTouches:NO];
      */
      
+    // キーボードの通知
+    [self separatorForKeyboardNotification];
+}
+
+- (void)separatorForKeyboardNotification{
     // キーボード表示の通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardOn:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil
+     ];
     // キーボード非表示の通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardOff:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil
+     ];
 }
 /*
 - (void)viewDidLayoutSubviews
@@ -180,32 +193,43 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (void)keyboardOn:(NSNotification *)notification
 {
+    /* ScrollViewを使用した移動
+     CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
+     [self.scrollView setContentOffset:scrollPoint animated:YES];
+     */
+    
     // キーボードのサイズ
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
-    /*ScrollViewを使用した移動
-    CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
-    [self.scrollView setContentOffset:scrollPoint animated:YES];
-     */
+    CGFloat keyboardHeight = keyboardSize.height;
+    CGSize viewSize = _noteView.frame.size;
+    CGRect tabRect = _noteTabBar.frame;
     
     // キーボード表示アニメーションのduration
     NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     // viewのアニメーション
     [UIView animateWithDuration:duration animations:^{
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height);
-        self.view.transform = transform;
-    }completion:NULL];
+        CGRect keyOnViewRect = CGRectMake(0, 0, viewSize.width, viewSize.height - keyboardHeight);
+        _noteView.frame = keyOnViewRect;
+        CGRect keyOnTabRect = CGRectMake(0, tabRect.origin.y - keyboardHeight, tabRect.size.width, tabRect.size.height);
+        _noteTabBar.frame = keyOnTabRect;
+     }completion:NULL];
 }
 
 - (void)keyboardOff:(NSNotification *)notification
 {
-//    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    // [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     NSDictionary *info = [notification userInfo];
     NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGSize viewSize = _noteView.frame.size;
+    CGSize tabSize = _noteTabBar.frame.size;
+    
     __weak typeof (self) _self = self;
     [UIView animateWithDuration:duration animations:^{
-        _self.view.transform = CGAffineTransformIdentity;
+        CGRect keyOffViewRect = CGRectMake(0, 0, viewSize.width, self.view.frame.size.height);
+        _self.noteView.frame = keyOffViewRect;
+        CGRect keyOnTabRect = CGRectMake(0, self.view.frame.size.height - tabSize.height, tabSize.width, tabSize.height);
+        _self.noteTabBar.frame = keyOnTabRect;
     }completion:NULL];
 }
 

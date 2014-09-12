@@ -101,7 +101,7 @@
         <!--Note View Controller - 講義名-->
         <scene sceneID="jqQ-yc-ob8">
             <objects>
-                <viewController id="c54-TM-9Kr" customClass="NoteViewController" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="c54-TM-9Kr" customClass="NoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ult-V6-OkQ"/>
                         <viewControllerLayoutGuide type="bottom" id="0bf-l6-sib"/>
@@ -150,6 +150,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addTextMemo" destination="PnP-MG-ZmS" id="6fB-rH-elM"/>
+                        <outlet property="noteTabBar" destination="SjW-6O-FRc" id="BpP-zk-hzV"/>
                         <outlet property="noteView" destination="Bv9-s0-CvD" id="Cmc-Wl-V48"/>
                     </connections>
                 </viewController>

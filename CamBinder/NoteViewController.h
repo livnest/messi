@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *noteView;
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIToolbar *noteTabBar;
 @property (weak, nonatomic) IBOutlet UITextField *addTextMemo;
 
 @end
