@@ -12,7 +12,7 @@
 #import "NoteViewConst.h"
 
 static NSInteger const NoteViewControllerTableSection = 1;
-#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
+//#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
 @interface NoteViewController () {
     NSMutableArray *_objectText;
@@ -40,13 +40,14 @@ static NSInteger const NoteViewControllerTableSection = 1;
     
     self.noteView.delegate = self;
     self.noteView.dataSource = self;
-    
-//    self.dataSourceNote = @[@"memo1",@"memo2",@"memo3"];
+    self.addTextMemo.delegate = self;
     
     // カスタムセルをセット
+    // MemoCell
     UINib *nibMemo = [UINib nibWithNibName:NoteViewMemoCellIdentifier bundle:nil];
-    UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibMemo forCellReuseIdentifier:@"MemoCell"];
+    // ImageCell
+    UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
     
     /* スクロールビューを利用したTableViewの上昇
@@ -55,13 +56,37 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
-     
-    // キーボード表示の通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOn:) name:UIKeyboardWillShowNotification object:nil];
-    // キーボード非表示の通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardOff:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    // キーボードの通知
+    [self registorForKeyboardNotification];
+}
+
+- (void)registorForKeyboardNotification
+{
+    // キーボード表示の通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardOn:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil
+     ];
+    // キーボード非表示の通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardOff:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil
+     ];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    // キーボード通知の削除
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+/*
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -69,7 +94,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // スクロール範囲を設定
     [self.scrollView setContentSize:CGSizeMake(WINDOW_SIZE.width, WINDOW_SIZE.height)];
 }
-
+*/
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -91,6 +116,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)addMemo:(id)sender
 {
+    [_addTextMemo resignFirstResponder];
     [self addObjectMemo:_addTextMemo.text];
 }
 
@@ -104,10 +130,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
         _objectText = [[NSMutableArray alloc] init];
     }
     // テキストの配列を追加
-    NSInteger rowText = [_objectText count];
-    NSLog(@"%ld:「%@」", rowText + 1, textField);
-    [_objectText addObject:[[NSString alloc] initWithFormat:@"%@", textField]];
-    NSString *textMemo = _objectText[rowText];
+    NSLog(@"%ld:「%@」", _object.count + 1, textField);
+    NSString *textMemo = textField;
     NSDate *dateMemo = [NSDate date];
     NSDictionary *memoDictionary = @{@"text": textMemo, @"date": dateMemo};
     
@@ -146,17 +170,17 @@ static NSInteger const NoteViewControllerTableSection = 1;
      *オブジェクトがMemoかImageの分岐の実装が必要
      */
     static NSString *CellIdentifier = @"MemoCell";
-    MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MemoNoteViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Memoセルの配列をセット
     NSDictionary *dictMemo = _object[indexPath.row];
     // MemoをtextFieldにセット
-    cell.textMemo.text = dictMemo[@"text"];
+    memoCell.textMemo.text = dictMemo[@"text"];
     // Memoの追加日時をLabelにセット
     NSDate *dateMemo = dictMemo[@"date"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
-    cell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
+    memoCell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
     
     /*
     UITableViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -166,7 +190,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
      memoCell.textLabel.text = self.dataSourceNote[indexPath.row];
      */
     
-    return cell;
+    return memoCell;
 }
 
 #pragma mark - UITableViewDelegate methods
@@ -180,38 +204,65 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (void)keyboardOn:(NSNotification *)notification
 {
-    // キーボードのサイズ
-    NSDictionary *info = [notification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
-    /*ScrollViewを使用した移動
-    CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
-    [self.scrollView setContentOffset:scrollPoint animated:YES];
+    /* ScrollViewを使用した移動
+     CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
+     [self.scrollView setContentOffset:scrollPoint animated:YES];
      */
     
-    // キーボード表示アニメーションのduration
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    // viewのアニメーション
-    [UIView animateWithDuration:duration animations:^{
-        CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height);
-        self.view.transform = transform;
-    }completion:NULL];
+    // 各アウトレットのサイズ
+    NSDictionary *info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    // 移動先の値
+    CGFloat moveTo = _noteTabBar.frame.origin.y - keyboardSize.height;
+    CGFloat resizeTo = self.view.frame.size.height - keyboardSize.height;
+    
+    //　アニメーションの呼び出し
+    [self animationWithKeyboard:notification
+                         moveTo:moveTo
+                       resizeTo:resizeTo
+     ];
 }
 
 - (void)keyboardOff:(NSNotification *)notification
 {
+    // 移動先の値
+    CGFloat moveTo = self.view.frame.size.height - _noteTabBar.frame.size.height;
+    CGFloat resizeTo = self.view.frame.size.height;
+    
+    //　アニメーションの呼び出し
+    [self animationWithKeyboard:notification
+                         moveTo:moveTo
+                       resizeTo:resizeTo
+     ];
+}
+
+- (void)animationWithKeyboard:(NSNotification *)notification moveTo:(CGFloat)moveTo resizeTo:(CGFloat)resizeTo
+{
 //    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+    CGSize viewSize = _noteView.frame.size;
+    CGSize tabSize = _noteTabBar.frame.size;
+    
     NSDictionary *info = [notification userInfo];
+    // アニメーションの時間
     NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    // アニメーションのタイプ
+    UIViewAnimationCurve curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
     __weak typeof (self) _self = self;
-    [UIView animateWithDuration:duration animations:^{
-        _self.view.transform = CGAffineTransformIdentity;
-    }completion:NULL];
+    [UIView animateWithDuration:duration
+                          delay:0.0f
+                        options:(curve << 16)
+                     animations:^{
+                         CGRect TabRect = CGRectMake(0, moveTo, tabSize.width, tabSize.height);
+                         _self.noteTabBar.frame = TabRect;
+                         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
+                         _self.noteView.frame = ViewRect;
+                     }completion:NULL];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
     return YES;
 }
 

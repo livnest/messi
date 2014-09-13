@@ -10,7 +10,7 @@
 
 @interface MemoNoteViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextField *textMemo;
+@property (weak, nonatomic) IBOutlet UILabel *textMemo;
 @property (weak, nonatomic) IBOutlet UILabel *labelMemoDate;
 
 + (CGFloat)rowHeight;
