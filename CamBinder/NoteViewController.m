@@ -40,13 +40,14 @@ static NSInteger const NoteViewControllerTableSection = 1;
     
     self.noteView.delegate = self;
     self.noteView.dataSource = self;
-    
-//    self.dataSourceNote = @[@"memo1",@"memo2",@"memo3"];
+    self.addTextMemo.delegate = self;
     
     // カスタムセルをセット
+    // MemoCell
     UINib *nibMemo = [UINib nibWithNibName:NoteViewMemoCellIdentifier bundle:nil];
-    UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibMemo forCellReuseIdentifier:@"MemoCell"];
+    // ImageCell
+    UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
     
     /* スクロールビューを利用したTableViewの上昇
@@ -55,12 +56,16 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
-     
-    // キーボードの通知
-    [self separatorForKeyboardNotification];
 }
 
-- (void)separatorForKeyboardNotification{
+- (void)viewWillAppear:(BOOL)animated
+{
+    // キーボードの通知
+    [self registorForKeyboardNotification];
+}
+
+- (void)registorForKeyboardNotification
+{
     // キーボード表示の通知
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardOn:)
@@ -74,6 +79,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
                                                object:nil
      ];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    // キーボード通知の削除
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 /*
 - (void)viewDidLayoutSubviews
 {
@@ -104,6 +116,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)addMemo:(id)sender
 {
+    [_addTextMemo resignFirstResponder];
     [self addObjectMemo:_addTextMemo.text];
 }
 
@@ -117,10 +130,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
         _objectText = [[NSMutableArray alloc] init];
     }
     // テキストの配列を追加
-    NSInteger rowText = [_objectText count];
-    NSLog(@"%ld:「%@」", rowText + 1, textField);
-    [_objectText addObject:[[NSString alloc] initWithFormat:@"%@", textField]];
-    NSString *textMemo = _objectText[rowText];
+    NSLog(@"%ld:「%@」", _object.count + 1, textField);
+    NSString *textMemo = textField;
     NSDate *dateMemo = [NSDate date];
     NSDictionary *memoDictionary = @{@"text": textMemo, @"date": dateMemo};
     
@@ -198,44 +209,60 @@ static NSInteger const NoteViewControllerTableSection = 1;
      [self.scrollView setContentOffset:scrollPoint animated:YES];
      */
     
-    // キーボードのサイズ
+    // 各アウトレットのサイズ
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    CGFloat keyboardHeight = keyboardSize.height;
-    CGSize viewSize = _noteView.frame.size;
-    CGRect tabRect = _noteTabBar.frame;
+    // 移動先の値
+    CGFloat moveTo = _noteTabBar.frame.origin.y - keyboardSize.height;
+    CGFloat resizeTo = self.view.frame.size.height - keyboardSize.height;
     
-    // キーボード表示アニメーションのduration
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    // viewのアニメーション
-    [UIView animateWithDuration:duration animations:^{
-        CGRect keyOnViewRect = CGRectMake(0, 0, viewSize.width, viewSize.height - keyboardHeight);
-        _noteView.frame = keyOnViewRect;
-        CGRect keyOnTabRect = CGRectMake(0, tabRect.origin.y - keyboardHeight, tabRect.size.width, tabRect.size.height);
-        _noteTabBar.frame = keyOnTabRect;
-     }completion:NULL];
+    //　アニメーションの呼び出し
+    [self animationWithKeyboard:notification
+                         moveTo:moveTo
+                       resizeTo:resizeTo
+     ];
 }
 
 - (void)keyboardOff:(NSNotification *)notification
 {
-    // [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    // 移動先の値
+    CGFloat moveTo = self.view.frame.size.height - _noteTabBar.frame.size.height;
+    CGFloat resizeTo = self.view.frame.size.height;
+    
+    //　アニメーションの呼び出し
+    [self animationWithKeyboard:notification
+                         moveTo:moveTo
+                       resizeTo:resizeTo
+     ];
+}
+
+- (void)animationWithKeyboard:(NSNotification *)notification moveTo:(CGFloat)moveTo resizeTo:(CGFloat)resizeTo
+{
+//    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
     CGSize viewSize = _noteView.frame.size;
     CGSize tabSize = _noteTabBar.frame.size;
     
+    NSDictionary *info = [notification userInfo];
+    // アニメーションの時間
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    // アニメーションのタイプ
+    UIViewAnimationCurve curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
     __weak typeof (self) _self = self;
-    [UIView animateWithDuration:duration animations:^{
-        CGRect keyOffViewRect = CGRectMake(0, 0, viewSize.width, self.view.frame.size.height);
-        _self.noteView.frame = keyOffViewRect;
-        CGRect keyOnTabRect = CGRectMake(0, self.view.frame.size.height - tabSize.height, tabSize.width, tabSize.height);
-        _self.noteTabBar.frame = keyOnTabRect;
-    }completion:NULL];
+    [UIView animateWithDuration:duration
+                          delay:0.0f
+                        options:(curve << 16)
+                     animations:^{
+                         CGRect TabRect = CGRectMake(0, moveTo, tabSize.width, tabSize.height);
+                         _self.noteTabBar.frame = TabRect;
+                         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
+                         _self.noteView.frame = ViewRect;
+                     }completion:NULL];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
     return YES;
 }
 
