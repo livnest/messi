@@ -46,18 +46,20 @@ static NSInteger const NoteViewControllerTableSection = 1;
     UINib *nibImage = [UINib nibWithNibName:NoteViewImageCellIdentifier bundle:nil];
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
     
+    // テキストフィールドのデザイン
+    [self textFieldDesign:_addTextMemo];
+    
     /* スクロールビューを利用したTableViewの上昇
     // TableViewの位置をキーボードの上部に移動するための準備
     [self.scrollView setDelegate:self];
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
-    
-    [self textFieldDesign:_addTextMemo];
 }
 
 - (void)textFieldDesign:(UITextField *)textField
 {
+    // 編集時にクリアボタンを表示
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
@@ -73,14 +75,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardOn:)
                                                  name:UIKeyboardWillShowNotification
-                                               object:nil
-     ];
+                                               object:nil];
     // キーボード非表示の通知
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardOff:)
                                                  name:UIKeyboardWillHideNotification
-                                               object:nil
-     ];
+                                               object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -255,6 +255,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
         _self.noteView.frame = ViewRect;
     };
+    // アニメーションの実行
     [UIView animateWithDuration:duration
                           delay:0.0f
                         options:(curve << 16)
@@ -264,6 +265,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [textField insertText:@"\n"];
     return YES;
 }
 
