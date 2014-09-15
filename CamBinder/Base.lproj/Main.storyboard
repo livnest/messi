@@ -41,7 +41,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cS2-hx-2Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4313" y="-1243"/>
+            <point key="canvasLocation" x="4839" y="-1243"/>
         </scene>
         <!--Sec Add New Subject View Controller - 新規講義-->
         <scene sceneID="yKD-85-hjV">
@@ -96,7 +96,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPd-Yb-hyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4313" y="-1961"/>
+            <point key="canvasLocation" x="4839" y="-1963"/>
         </scene>
         <!--Note View Controller - 講義名-->
         <scene sceneID="jqQ-yc-ob8">
@@ -156,12 +156,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKY-OM-mJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4792" y="-1243"/>
+            <point key="canvasLocation" x="5318" y="-1243"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Item-->
         <scene sceneID="Ndk-Rk-oA5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yhK-Uq-JQg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="TmA-NV-3Xa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fBr-gv-tIh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -174,7 +175,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbX-kj-Yfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3837" y="-1243"/>
+            <point key="canvasLocation" x="4363" y="-1243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p1c-AL-7t1">
@@ -192,7 +193,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frz-qO-Pwr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3837" y="-1961"/>
+            <point key="canvasLocation" x="4363" y="-1963"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

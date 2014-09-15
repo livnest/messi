@@ -15,7 +15,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 //#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
 @interface NoteViewController () {
-    NSMutableArray *_objectText;
     NSMutableArray *_objectImage;
     NSMutableArray *_object;
 }
@@ -112,7 +111,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 }
 */
 
-#pragma mark - UITableViewDataSource AddObject Method
+#pragma mark - UITableView AddNoteObject Method
 
 - (IBAction)addMemo:(id)sender
 {
@@ -126,14 +125,10 @@ static NSInteger const NoteViewControllerTableSection = 1;
     if (!_object) {
         _object = [[NSMutableArray alloc] init];
     }
-    if (!_objectText) {
-        _objectText = [[NSMutableArray alloc] init];
-    }
     // テキストの配列を追加
     NSLog(@"%ld:「%@」", _object.count + 1, textField);
-    NSString *textMemo = textField;
     NSDate *dateMemo = [NSDate date];
-    NSDictionary *memoDictionary = @{@"text": textMemo, @"date": dateMemo};
+    NSDictionary *memoDictionary = @{@"text": textField, @"date": dateMemo};
     
     // テキストと日時をMemoセルの配列に追加
     NSInteger rowObj = [_object count];
@@ -240,25 +235,27 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
 //    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     
-    CGSize viewSize = _noteView.frame.size;
-    CGSize tabSize = _noteTabBar.frame.size;
-    
     NSDictionary *info = [notification userInfo];
     // アニメーションの時間
     NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     // アニメーションのタイプ
     UIViewAnimationCurve curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    
+    // アニメーション本体
+    CGSize viewSize = _noteView.frame.size;
+    CGSize tabSize = _noteTabBar.frame.size;
     __weak typeof (self) _self = self;
+    void (^animation)(void);
+    animation = ^(void){
+        CGRect TabRect = CGRectMake(0, moveTo, tabSize.width, tabSize.height);
+        _self.noteTabBar.frame = TabRect;
+        CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
+        _self.noteView.frame = ViewRect;
+    };
     [UIView animateWithDuration:duration
                           delay:0.0f
                         options:(curve << 16)
-                     animations:^{
-                         CGRect TabRect = CGRectMake(0, moveTo, tabSize.width, tabSize.height);
-                         _self.noteTabBar.frame = TabRect;
-                         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
-                         _self.noteView.frame = ViewRect;
-                     }completion:NULL];
+                     animations:animation
+                     completion:NULL];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
