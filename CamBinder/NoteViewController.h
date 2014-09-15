@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *noteTabBar;
 @property (weak, nonatomic) IBOutlet UITextField *addTextMemo;
 
+@property (strong, nonatomic) NSMutableArray *object;
+
 @end

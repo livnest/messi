@@ -14,10 +14,7 @@
 static NSInteger const NoteViewControllerTableSection = 1;
 //#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
-@interface NoteViewController () {
-    NSMutableArray *_objectImage;
-    NSMutableArray *_object;
-}
+@interface NoteViewController ()
 
 @end
 
@@ -55,6 +52,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
+    
+    [self textFieldDesign:_addTextMemo];
+}
+
+- (void)textFieldDesign:(UITextField *)textField
+{
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
 - (void)viewWillAppear:(BOOL)animated
