@@ -125,7 +125,7 @@
                                 <action selector="cacelButtonPressed:" destination="UA6-Ec-mH1" id="PTn-CQ-q1k"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="完了" style="done" id="3xK-rh-jBa">
+                        <barButtonItem key="rightBarButtonItem" title="作成" style="done" id="3xK-rh-jBa">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="UA6-Ec-mH1" id="JKX-dc-EDE"/>
                             </connections>

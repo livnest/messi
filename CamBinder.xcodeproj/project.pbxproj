@@ -120,9 +120,9 @@
 		B3696FE219C52160006DAE8D /* AddTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */,
 				B3696FE319C521CE006DAE8D /* AddTableTableViewCell.h */,
 				B3696FE419C521CE006DAE8D /* AddTableTableViewCell.m */,
-				B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */,
 			);
 			name = AddTableViewCell;
 			sourceTree = "<group>";
