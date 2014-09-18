@@ -149,7 +149,7 @@
                         <barButtonItem key="rightBarButtonItem" title="選択" id="jk4-il-5bQ"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addTextMemo" destination="PnP-MG-ZmS" id="6fB-rH-elM"/>
+                        <outlet property="addTextMemo" destination="PnP-MG-ZmS" id="ZPS-yK-abt"/>
                         <outlet property="noteTabBar" destination="SjW-6O-FRc" id="BpP-zk-hzV"/>
                         <outlet property="noteView" destination="Bv9-s0-CvD" id="Cmc-Wl-V48"/>
                     </connections>
