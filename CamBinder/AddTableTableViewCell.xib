@@ -44,8 +44,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="labelSemester" destination="pVp-6g-gnH" id="cUB-Iq-Gw8"/>
-                <outlet property="labelSubject" destination="Xvj-PL-Tzn" id="gr5-XP-v2B"/>
+                <outlet property="labelClass" destination="bPT-Cy-hre" id="j7A-d9-40M"/>
+                <outlet property="labelSemester" destination="pVp-6g-gnH" id="ZCI-3L-AKV"/>
+                <outlet property="labelSubject" destination="Xvj-PL-Tzn" id="f3a-WR-e7S"/>
             </connections>
         </tableViewCell>
     </objects>

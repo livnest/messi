@@ -131,10 +131,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="nameField" destination="8sf-zg-p7q" id="AyX-BY-GtL"/>
-                        <outlet property="textClass" destination="FHV-jP-fhj" id="gGR-r9-2RG"/>
-                        <outlet property="textSemeseter" destination="r4p-v3-gUg" id="fvn-J5-9Nl"/>
-                        <outlet property="textSemseter" destination="r4p-v3-gUg" id="KuZ-PG-CtE"/>
+                        <outlet property="nameField" destination="8sf-zg-p7q" id="YzS-6x-YGa"/>
+                        <outlet property="textClass" destination="FHV-jP-fhj" id="zRN-bE-G3U"/>
+                        <outlet property="textSemeseter" destination="r4p-v3-gUg" id="IX5-aV-5wG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPd-Yb-hyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
