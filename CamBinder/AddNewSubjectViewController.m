@@ -7,6 +7,7 @@
 //
 
 #import "AddNewSubjectViewController.h"
+#import "AddTableTableViewCell.h"
 
 @interface AddNewSubjectViewController ()
 
@@ -44,8 +45,19 @@
     
     self.tasks = [[NSMutableArray alloc] init];
     
-    [self.tableView reloadData];
+    UINib *nibSubject = [UINib nibWithNibName:@"AddTableTableViewCell" bundle:nil];
+    [self.tableView registerNib:nibSubject forCellReuseIdentifier:@"SubjectCell"];
     
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:YES];
+    
+    if(editing){
+        self.editButtonItem.title = @"キャンセル";
+    }else{
+        self.editButtonItem.title = @"編集";
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +66,37 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - IBActions
+
+- (void)editButtonPressed:(id)sender {
+    self.editing = !self.editing;
+}
+
+- (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSDictionary *)item
+{
+    NSLog(@"SecAddOjbectViewControllerDidDone");
+    
+    // 配列を受け取って挿入
+    if (!_tasks) {
+        _tasks = [[NSMutableArray alloc] init];
+    }
+    [_tasks insertObject:item atIndex:0];
+    // セルを挿入
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    // 画面を閉じる
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)secAddNewSubjectDidCancel:(SecAddNewSubjectViewController *)contoller
+{
+    NSLog(@"SecAddOjbectViewControllerDidCancel");
+    
+    // 画面を閉じる
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark TableView Delegate method
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -73,20 +115,23 @@
     
     //AddNewSubject *currentTask  = [self.tasks objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    AddTableTableViewCell *subjectCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
     
     // Configure the cell...
     
-    cell.textLabel.text = _tasks[indexPath.row];
+    NSDictionary *dict = _tasks[indexPath.row];
     
-    return cell;
+    subjectCell.labelSubject.text = dict[@"name"];
+    subjectCell.labelSemester.text = dict[@"semester"];
+    subjectCell.labelClass.text = dict[@"class"];
+    
+    return subjectCell;
 }
 
-
-    // セルがタップされた時の処理
+    // *セルがタップされた時の処理
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"pushNoteView" sender:nil];
@@ -134,6 +179,14 @@
     return YES;
 }
 
+#pragma mark - TableView data source method
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [AddTableTableViewCell rowHeight];
+}
+
 
 /*
 #pragma mark - Navigation
@@ -145,39 +198,9 @@
     // Pass the selected object to the new view controller.
 }
 */
-#pragma mark - IBActions
-
-- (void)editButtonPressed:(id)sender {
-    self.editing = !self.editing;
-}
-
-- (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSString *)item
-{
-    NSLog(@"SecAddOjbectViewControllerDidDone");
-    
-    // 配列を受け取って挿入
-    if (!_tasks) {
-        _tasks = [[NSMutableArray alloc] init];
-    }
-    [_tasks insertObject:item atIndex:0];
-    // セルを挿入
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-    // 画面を閉じる
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)secAddNewSubjectDidCancel:(SecAddNewSubjectViewController *)contoller
-{
-    NSLog(@"SecAddOjbectViewControllerDidCancel");
-    
-    // 画面を閉じる
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddTaskSegue"])
-    {
+    if ([segue.identifier isEqualToString:@"AddTaskSegue"]){
         /*
          UINavigationController *navCon = segue.destinationViewController;
          SecAddNewSubjectViewController *addNewSubjectViewController = [navCon.viewControllers objectAtIndex:0];
@@ -186,16 +209,6 @@
         
         SecAddNewSubjectViewController *secAddNewSubjectViewController = (SecAddNewSubjectViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
         secAddNewSubjectViewController.delegate = self;
-    }
-}
-
--(void)setEditing:(BOOL)editing animated:(BOOL)animated{
-    [super setEditing:editing animated:YES];
-    
-    if(editing){
-        self.editButtonItem.title = @"キャンセル";
-    }else{
-        self.editButtonItem.title = @"編集";
     }
 }
 

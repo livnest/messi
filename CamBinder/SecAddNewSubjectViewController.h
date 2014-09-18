@@ -20,6 +20,9 @@
 //@property (nonatomic, strong) AddNewSubjectViewController *SubjectViewController;
 
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
+@property (nonatomic, strong) IBOutlet UITextField *textSemeseter;
+@property (nonatomic, strong) IBOutlet UITextField *textClass;
+
 - (IBAction)cacelButtonPressed:(id)sender;
 - (IBAction)doneButtonPressed:(id)sender;
 
@@ -28,6 +31,6 @@
 @protocol SecAddNewSubjectViewControllerDelegate <NSObject>
 
 - (void)secAddNewSubjectDidCancel:(SecAddNewSubjectViewController *)controller;
-- (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSString *)item;
+- (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSDictionary *)item;
 
 @end
