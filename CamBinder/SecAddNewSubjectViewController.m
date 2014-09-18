@@ -10,7 +10,7 @@
 #import "AddNewSubjectViewController.h"
 #import "AddNewSubject.h"
 
-@interface SecAddNewSubjectViewController ()
+@interface SecAddNewSubjectViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -72,5 +72,14 @@
     
     [self.delegate secAddNewSubjectDidDone:self item:dictSubject];
 }
-     
+
+#pragma mark - UITextField Delegate method
+- (BOOL)textFieldShouldReturn:(UITextField *)textField  // called when 'return' key pressed. return NO to ignore.
+{
+    if (textField == _nameField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
 @end
