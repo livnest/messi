@@ -49,6 +49,10 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // テキストフィールドのデザイン
     [self textFieldDesign:_addTextMemo];
     
+    if (_addTextMemo.text.length == 0) {
+        _addMemo.enabled = NO;
+    }
+    
     /* スクロールビューを利用したTableViewの上昇
     // TableViewの位置をキーボードの上部に移動するための準備
     [self.scrollView setDelegate:self];
@@ -261,6 +265,20 @@ static NSInteger const NoteViewControllerTableSection = 1;
                         options:(curve << 16)
                      animations:animation
                      completion:NULL];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string   // return NO to not change text
+{
+    if (textField == _addTextMemo) {
+        if (string.length == 0) {
+            if (textField.text.length == 1) {
+                _addMemo.enabled = NO;
+            }
+        } else if (string.length != 0) {
+            _addMemo.enabled = YES;
+        }
+    }
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -10,7 +10,7 @@
 #import "AddNewSubjectViewController.h"
 #import "AddNewSubject.h"
 
-@interface SecAddNewSubjectViewController ()<UITextFieldDelegate>
+@interface SecAddNewSubjectViewController ()
 
 @end
 
@@ -37,6 +37,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _nameField.delegate = self;
+    _textClass.delegate = self;
+    _textSemeseter.delegate = self;
+    
+    if (_nameField.text.length ==0) {
+        _buttonDone.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,24 +70,34 @@
     /*
      AddNewSubject *newSubject = [[AddNewSubject alloc] initWithName:self.nameField.text done:NO];
     [self.SubjectViewController.tasks addObject:newSubject];
-    
     [self dismissModalViewControllerAnimated:YES];
-    
-     
     [self.SubjectViewController.tableView reloadData];
      */
+    
     NSDictionary *dictSubject = @{@"name": _nameField.text, @"semester": _textSemeseter.text, @"class": _textClass.text};
     
     [self.delegate secAddNewSubjectDidDone:self item:dictSubject];
 }
 
 #pragma mark - UITextField Delegate method
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField  // called when 'return' key pressed. return NO to ignore.
 {
     if (textField == _nameField) {
         [textField resignFirstResponder];
+    } else if (textField == _textSemeseter) {
+        [textField resignFirstResponder];
+    } else if (textField == _textClass) {
+        [textField resignFirstResponder];
     }
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (_nameField.text.length != 0) {
+        _buttonDone.enabled = YES;
+    }
 }
 
 @end

@@ -13,7 +13,7 @@
 //@class AddNewSubjectViewController;
 
 
-@interface SecAddNewSubjectViewController : UITableViewController
+@interface SecAddNewSubjectViewController : UITableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) id<SecAddNewSubjectViewControllerDelegate> delegate;
 
@@ -22,6 +22,8 @@
 @property (nonatomic, strong) IBOutlet UITextField *nameField;
 @property (nonatomic, strong) IBOutlet UITextField *textSemeseter;
 @property (nonatomic, strong) IBOutlet UITextField *textClass;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonDone;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonCancel;
 
 - (IBAction)cacelButtonPressed:(id)sender;
 - (IBAction)doneButtonPressed:(id)sender;
