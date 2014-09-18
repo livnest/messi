@@ -120,9 +120,9 @@
 		B3696FE219C52160006DAE8D /* AddTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */,
 				B3696FE319C521CE006DAE8D /* AddTableTableViewCell.h */,
 				B3696FE419C521CE006DAE8D /* AddTableTableViewCell.m */,
-				B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */,
 			);
 			name = AddTableViewCell;
 			sourceTree = "<group>";
@@ -203,11 +203,11 @@
 			isa = PBXGroup;
 			children = (
 				F120D68019BA147900D00369 /* Const */,
-				B3696FE219C52160006DAE8D /* AddTableViewCell */,
-				B352BB9219BDA2B0009346F3 /* AddNewSubject */,
-				F120D67519BA096500D00369 /* NoteViewCell */,
 				F1C213AD19B8B0EB00544219 /* View */,
 				F13FF22E19AA481D004CB13E /* ViewController */,
+				B3696FE219C52160006DAE8D /* AddTableViewCell */,
+				F120D67519BA096500D00369 /* NoteViewCell */,
+				B352BB9219BDA2B0009346F3 /* AddNewSubject */,
 				F1DCAC5B197A8AF900C98311 /* AppDelegate.h */,
 				F1DCAC5C197A8AF900C98311 /* AppDelegate.m */,
 				F1DCAC5E197A8AF900C98311 /* Main.storyboard */,

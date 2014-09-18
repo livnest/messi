@@ -15,6 +15,7 @@
     int selectedindex;
     
 }
+@property (strong, nonatomic) IBOutlet UITableView *tableSubject;
 
 @property (nonatomic, nonatomic) NSMutableArray *tasks;
 
