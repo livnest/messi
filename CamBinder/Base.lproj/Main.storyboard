@@ -36,6 +36,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableSubject" destination="sfq-5I-eZG" id="R0f-aX-pTy"/>
                         <segue destination="c54-TM-9Kr" kind="push" identifier="pushNoteView" id="saM-UY-pbt"/>
                     </connections>
                 </tableViewController>

@@ -47,6 +47,11 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [_nameField becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

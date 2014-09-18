@@ -47,7 +47,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.noteView registerNib:nibImage forCellReuseIdentifier:@"ImageCell"];
     
     // テキストフィールドのデザイン
-    [self textFieldDesign:_addTextMemo];
+    // [self textFieldDesign:_addTextMemo];
     
     if (_addTextMemo.text.length == 0) {
         _addMemo.enabled = NO;
@@ -59,12 +59,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
-}
-
-- (void)textFieldDesign:(UITextField *)textField
-{
-    // 編集時にクリアボタンを表示
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,9 +102,14 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
+- (void)setNavigationTitle:(NSDictionary *)dict
+{
+    self.navigationItem.title = dict[@"name"];
+}
+
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -127,16 +126,18 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self addObjectMemo:_addTextMemo.text];
 }
 
-- (void)addObjectMemo:(NSString *)textField
+- (void)addObjectMemo:(NSString *)text
 {
     // 配列が作られていない場合、配列を初期化
     if (!_object) {
         _object = [[NSMutableArray alloc] init];
     }
     // テキストの配列を追加
-    NSLog(@"%ld:「%@」", _object.count + 1, textField);
+    NSLog(@"%ld:「%@」", _object.count + 1, text);
     NSDate *dateMemo = [NSDate date];
-    NSDictionary *memoDictionary = @{@"text": textField, @"date": dateMemo};
+    NSDictionary *memoDictionary = @{@"text": text, @"date": dateMemo};
+    // textFieldを空にする
+    
     
     // テキストと日時をMemoセルの配列に追加
     NSInteger rowObj = [_object count];
@@ -216,7 +217,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     // 移動先の値
-    CGFloat moveTo = _noteTabBar.frame.origin.y - keyboardSize.height;
+    CGFloat moveTo = self.view.frame.size.height - keyboardSize.height - _noteTabBar.frame.size.height;
     CGFloat resizeTo = self.view.frame.size.height - keyboardSize.height;
     
     //　アニメーションの呼び出し
@@ -270,11 +271,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string   // return NO to not change text
 {
     if (textField == _addTextMemo) {
+        // テキストが空の時
         if (string.length == 0) {
             if (textField.text.length == 1) {
                 _addMemo.enabled = NO;
             }
-        } else if (string.length != 0) {
+        // テキストが入力されている時
+        } else {
             _addMemo.enabled = YES;
         }
     }

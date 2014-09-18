@@ -8,6 +8,7 @@
 
 #import "AddNewSubjectViewController.h"
 #import "AddTableTableViewCell.h"
+#import "NoteViewController.h"
 
 @interface AddNewSubjectViewController ()
 
@@ -172,20 +173,6 @@
     self.editing = !self.editing;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddTaskSegue"])
-    {
-        /*
-         UINavigationController *navCon = segue.destinationViewController;
-         SecAddNewSubjectViewController *addNewSubjectViewController = [navCon.viewControllers objectAtIndex:0];
-         addNewSubjectViewController.SubjectViewController = self;
-         */
-        
-        SecAddNewSubjectViewController *secAddNewSubjectViewController = (SecAddNewSubjectViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        secAddNewSubjectViewController.delegate = self;
-    }
-}
-
 - (void)secAddNewSubjectDidDone:(SecAddNewSubjectViewController *)controller item:(NSString *)item
 {
     NSLog(@"SecAddOjbectViewControllerDidDone");
@@ -208,6 +195,23 @@
     
     // 画面を閉じる
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddTaskSegue"]){
+        /*
+         UINavigationController *navCon = segue.destinationViewController;
+         SecAddNewSubjectViewController *addNewSubjectViewController = [navCon.viewControllers objectAtIndex:0];
+         addNewSubjectViewController.SubjectViewController = self;
+         */
+        SecAddNewSubjectViewController *secAddNewSubjectViewController = (SecAddNewSubjectViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        secAddNewSubjectViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"pushNoteView"]) {
+        NoteViewController *noteViewController = segue.destinationViewController;
+        NSIndexPath *indexPath = [_tableSubject indexPathForSelectedRow];
+        NSDictionary *dict = _tasks[indexPath.row];
+        noteViewController.navigationItem.title = dict[@"name"];
+    }
 }
 
 @end
