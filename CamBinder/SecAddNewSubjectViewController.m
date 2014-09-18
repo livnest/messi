@@ -68,8 +68,9 @@
      
     [self.SubjectViewController.tableView reloadData];
      */
+    NSDictionary *dictSubject = @{@"name": _nameField.text, @"semester": _textSemeseter.text, @"class": _textClass.text};
     
-    [self.delegate secAddNewSubjectDidDone:self item:self.nameField.text];
+    [self.delegate secAddNewSubjectDidDone:self item:dictSubject];
 }
 
 #pragma mark - UITextField Delegate method

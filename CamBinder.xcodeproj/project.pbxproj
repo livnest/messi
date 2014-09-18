@@ -10,6 +10,8 @@
 		B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9419BDA342009346F3 /* AddNewSubject.m */; };
 		B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9719BDA7F6009346F3 /* AddNewSubjectViewController.m */; };
 		B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */; };
+		B3696FE619C521CE006DAE8D /* AddTableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3696FE419C521CE006DAE8D /* AddTableTableViewCell.m */; };
+		B3696FE719C521CE006DAE8D /* AddTableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */; };
 		F120D67719BA101A00D00369 /* NoteViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67619BA101A00D00369 /* NoteViewImageCell.xib */; };
 		F120D67919BA102B00D00369 /* NoteViewMemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */; };
 		F120D67C19BA11C800D00369 /* MemoNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67B19BA11C800D00369 /* MemoNoteViewCell.m */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B305148119CA890B000E983F /* AddTableViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewConst.h; sourceTree = "<group>"; };
 		B352BB9319BDA342009346F3 /* AddNewSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSubject.h; sourceTree = "<group>"; };
 		B352BB9419BDA342009346F3 /* AddNewSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSubject.m; sourceTree = "<group>"; };
 		B352BB9619BDA7F6009346F3 /* AddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSubjectViewController.h; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		B352BB9919BDB353009346F3 /* SecAddNewSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAddNewSubjectViewController.h; sourceTree = "<group>"; };
 		B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecAddNewSubjectViewController.m; sourceTree = "<group>"; };
 		B352BB9C19BDEDB8009346F3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B3696FE319C521CE006DAE8D /* AddTableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableTableViewCell.h; sourceTree = "<group>"; };
+		B3696FE419C521CE006DAE8D /* AddTableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableTableViewCell.m; sourceTree = "<group>"; };
+		B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTableTableViewCell.xib; sourceTree = "<group>"; };
 		F120D67619BA101A00D00369 /* NoteViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewImageCell.xib; sourceTree = "<group>"; };
 		F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewMemoCell.xib; sourceTree = "<group>"; };
 		F120D67A19BA11C800D00369 /* MemoNoteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoNoteViewCell.h; sourceTree = "<group>"; };
@@ -111,6 +117,16 @@
 			name = AddNewSubject;
 			sourceTree = "<group>";
 		};
+		B3696FE219C52160006DAE8D /* AddTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B3696FE319C521CE006DAE8D /* AddTableTableViewCell.h */,
+				B3696FE419C521CE006DAE8D /* AddTableTableViewCell.m */,
+				B3696FE519C521CE006DAE8D /* AddTableTableViewCell.xib */,
+			);
+			name = AddTableViewCell;
+			sourceTree = "<group>";
+		};
 		F120D67519BA096500D00369 /* NoteViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F120D68119BA149600D00369 /* NoteViewConst.h */,
+				B305148119CA890B000E983F /* AddTableViewConst.h */,
 			);
 			name = Const;
 			sourceTree = "<group>";
@@ -185,6 +202,7 @@
 		F1DCAC52197A8AF900C98311 /* CamBinder */ = {
 			isa = PBXGroup;
 			children = (
+				B3696FE219C52160006DAE8D /* AddTableViewCell */,
 				B352BB9219BDA2B0009346F3 /* AddNewSubject */,
 				F120D68019BA147900D00369 /* Const */,
 				F120D67519BA096500D00369 /* NoteViewCell */,
@@ -306,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3696FE719C521CE006DAE8D /* AddTableTableViewCell.xib in Resources */,
 				F1DCAC65197A8AF900C98311 /* Images.xcassets in Resources */,
 				F1DCAC57197A8AF900C98311 /* InfoPlist.strings in Resources */,
 				F120D67719BA101A00D00369 /* NoteViewImageCell.xib in Resources */,
@@ -335,6 +354,7 @@
 				F120D67F19BA121500D00369 /* ImageNoteViewCell.m in Sources */,
 				F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */,
 				F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */,
+				B3696FE619C521CE006DAE8D /* AddTableTableViewCell.m in Sources */,
 				F120D67C19BA11C800D00369 /* MemoNoteViewCell.m in Sources */,
 				F1DCAC59197A8AF900C98311 /* main.m in Sources */,
 				B352BB9519BDA342009346F3 /* AddNewSubject.m in Sources */,

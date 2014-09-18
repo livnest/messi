@@ -7,6 +7,7 @@
 //
 
 #import "AddNewSubjectViewController.h"
+#import "AddTableTableViewCell.h"
 
 @interface AddNewSubjectViewController ()
 
@@ -44,8 +45,8 @@
     
     self.tasks = [[NSMutableArray alloc] init];
     
-    [self.tableView reloadData];
-    
+    UINib *nibSubject = [UINib nibWithNibName:@"AddTableTableViewCell" bundle:nil];
+    [self.tableView registerNib:nibSubject forCellReuseIdentifier:@"SubjectCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,20 +84,23 @@
     
     //AddNewSubject *currentTask  = [self.tasks objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    AddTableTableViewCell *subjectCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
     
     // Configure the cell...
     
-    cell.textLabel.text = _tasks[indexPath.row];
+    NSDictionary *dict = _tasks[indexPath.row];
     
-    return cell;
+    subjectCell.labelSubject.text = dict[@"name"];
+    subjectCell.labelSemester.text = dict[@"semester"];
+    subjectCell.labelClass.text = dict[@"class"];
+    
+    return subjectCell;
 }
 
-
-    // セルがタップされた時の処理
+    // *セルがタップされた時の処理
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"pushNoteView" sender:nil];
@@ -125,8 +129,6 @@
     }   
 }
 
-
-
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
@@ -144,6 +146,14 @@
     return YES;
 }
 
+#pragma mark - TableView data source method
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [AddTableTableViewCell rowHeight];
+}
+
 
 /*
 #pragma mark - Navigation
@@ -154,7 +164,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+ */
+
 #pragma mark - IBActions
 
 - (void)editButtonPressed:(id)sender {

@@ -10,10 +10,12 @@
 #import "AddNewSubject.h"
 #import "SecAddNewSubjectViewController.h"
 
-@interface AddNewSubjectViewController : UITableViewController <SecAddNewSubjectViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface AddNewSubjectViewController : UITableViewController <SecAddNewSubjectViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>{
+    
+    int selectedindex;
+    
+}
 
-@property (nonatomic, strong) NSMutableArray *tasks;
-
-- (IBAction)editButtonPressed:(id)sender;
+@property (nonatomic, nonatomic) NSMutableArray *tasks;
 
 @end
