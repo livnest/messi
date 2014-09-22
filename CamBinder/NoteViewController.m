@@ -120,6 +120,10 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 #pragma mark - UITableView AddNoteObject Method
 
+/* 
+ * Memoの挿入
+ */
+
 - (IBAction)addMemo:(id)sender
 {
     [_addTextMemo resignFirstResponder];
@@ -154,6 +158,59 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+/*
+ * 画像の挿入
+ */
+
+- (IBAction)tapAddImage:(UIBarButtonItem *)sender
+{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if([UIImagePickerController isSourceTypeAvailable:sourceType]){
+        UIImagePickerController *picker=[[UIImagePickerController alloc] init];
+        picker.sourceType = sourceType;
+        picker.delegate = self;
+        [self presentViewController:picker
+                           animated:YES
+                         completion:Nil
+         ];
+    }
+}
+
+- (IBAction)tapAddLibarary:(UIBarButtonItem *)sender
+{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = sourceType;
+        picker.delegate = self;
+        [self presentViewController:picker
+                           animated:YES
+                         completion:Nil
+         ];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    void (^completion)(void);
+    completion = ^(void){
+        if (!_object) {
+            _object = [[NSMutableArray alloc] init];
+        }
+        NSLog(@"%ld:「image」", _object.count + 1);
+        NSDate *dateMemo = [NSDate date];
+        NSDictionary *imageDictionary = @{@"image": image, @"date": dateMemo};
+        NSInteger rowObj = [_object count];
+        [_object insertObject:imageDictionary atIndex:rowObj];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowObj inSection:0];
+        [_noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    };
+    [self dismissViewControllerAnimated:YES
+                             completion:completion
+     ];
+}
+
 #pragma mark - UITableViewDataSource delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -170,38 +227,47 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // セルの初期化
-    /*
-     *オブジェクトがMemoかImageの分岐の実装が必要
-     */
-    static NSString *CellIdentifier = @"MemoCell";
-    MemoNoteViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Memoセルの配列をセット
-    NSDictionary *dictMemo = _object[indexPath.row];
-    // MemoをtextFieldにセット
-    memoCell.textMemo.text = dictMemo[@"text"];
-    // Memoの追加日時をLabelにセット
-    NSDate *dateMemo = dictMemo[@"date"];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
-    memoCell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
-    
-    /*
-    UITableViewCell *memoCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!memoCell) {
-        memoCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    // Memoセル
+    if (!_object[indexPath.row][@"image"]) {
+        static NSString *CellIdentifier = @"MemoCell";
+        MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Memoセルの配列をセット
+        NSDictionary *dictMemo = _object[indexPath.row];
+        // MemoをtextFieldにセット
+        cell.textMemo.text = dictMemo[@"text"];
+        // Memoの追加日時をLabelにセット
+        NSDate *dateMemo = dictMemo[@"date"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
+        cell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
+        
+        return cell;
+    // Imageセル
+    } else {
+        static NSString *CellIdentifier = @"ImageCell";
+        ImageNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        NSDictionary *dictImage = _object[indexPath.row];
+        cell.imageView.image = dictImage[@"image"];
+        NSDate *dateImage = dictImage[@"date"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
+        cell.labelImageDate.text = [dateFormatter stringFromDate:dateImage];
+        
+        return cell;
     }
-     memoCell.textLabel.text = self.dataSourceNote[indexPath.row];
-     */
-    
-    return memoCell;
 }
 
 #pragma mark - UITableViewDelegate methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [MemoNoteViewCell rowHeight];
+    if (!_object[indexPath.row][@"image"]) {
+        return [MemoNoteViewCell rowHeight];
+    } else {
+        return [ImageNoteViewCell rowHeight];
+    }
 }
 
 #pragma mark - UITextFieldDelegate methods
@@ -271,12 +337,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string   // return NO to not change text
 {
     if (textField == _addTextMemo) {
-        // テキストが空の時
+        // デリート時
         if (string.length == 0) {
             if (textField.text.length == 1) {
                 _addMemo.enabled = NO;
             }
-        // テキストが入力されている時
+        // 入力時
         } else {
             _addMemo.enabled = YES;
         }

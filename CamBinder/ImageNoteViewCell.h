@@ -10,6 +10,9 @@
 
 @interface ImageNoteViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *_imageView;
+@property (weak, nonatomic) IBOutlet UILabel *labelImageDate;
+
 + (CGFloat)rowHeight;
 
 @end

@@ -16,6 +16,7 @@
 		F120D67919BA102B00D00369 /* NoteViewMemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */; };
 		F120D67C19BA11C800D00369 /* MemoNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67B19BA11C800D00369 /* MemoNoteViewCell.m */; };
 		F120D67F19BA121500D00369 /* ImageNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67E19BA121500D00369 /* ImageNoteViewCell.m */; };
+		F12D724919D0139E00F1F680 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F12D724819D0139E00F1F680 /* img.jpg */; };
 		F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13FF23019AA4867004CB13E /* NoteViewController.m */; };
 		F1DCAC4D197A8AF900C98311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4C197A8AF900C98311 /* Foundation.framework */; };
 		F1DCAC4F197A8AF900C98311 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */; };
@@ -62,6 +63,7 @@
 		F120D67D19BA121500D00369 /* ImageNoteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNoteViewCell.h; sourceTree = "<group>"; };
 		F120D67E19BA121500D00369 /* ImageNoteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNoteViewCell.m; sourceTree = "<group>"; };
 		F120D68119BA149600D00369 /* NoteViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewConst.h; sourceTree = "<group>"; };
+		F12D724819D0139E00F1F680 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		F13FF22F19AA4867004CB13E /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
 		F13FF23019AA4867004CB13E /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
 		F1DCAC49197A8AF900C98311 /* CamBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 				F120D67619BA101A00D00369 /* NoteViewImageCell.xib */,
 				F120D67D19BA121500D00369 /* ImageNoteViewCell.h */,
 				F120D67E19BA121500D00369 /* ImageNoteViewCell.m */,
+				F12D724819D0139E00F1F680 /* img.jpg */,
 				F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */,
 				F120D67A19BA11C800D00369 /* MemoNoteViewCell.h */,
 				F120D67B19BA11C800D00369 /* MemoNoteViewCell.m */,
@@ -330,6 +333,7 @@
 				F120D67719BA101A00D00369 /* NoteViewImageCell.xib in Resources */,
 				F1DCAC60197A8AF900C98311 /* Main.storyboard in Resources */,
 				F120D67919BA102B00D00369 /* NoteViewMemoCell.xib in Resources */,
+				F12D724919D0139E00F1F680 /* img.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CamBinder/CamBinder-Prefix.pch";
 				INFOPLIST_FILE = "CamBinder/CamBinder-Info.plist";
@@ -495,6 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CamBinder/CamBinder-Prefix.pch";
 				INFOPLIST_FILE = "CamBinder/CamBinder-Info.plist";
