@@ -14,7 +14,9 @@
 static NSInteger const NoteViewControllerTableSection = 1;
 //#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
-@interface NoteViewController ()
+@interface NoteViewController () {
+    CGRect *_rect;
+}
 
 @end
 
@@ -59,6 +61,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -148,14 +151,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [_object insertObject:memoDictionary atIndex:rowObj];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowObj inSection:0];
     // noteViewにMemoセルを挿入するメソッドを実行
-    [self addMemoCellForRowAtIndexPath:indexPath];
-}
-
-- (void)addMemoCellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // noteViewにMemoセルを挿入
-    [self.noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-    [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self addNoteViewCellForRowAtIndexPath:indexPath];
 }
 
 /*
@@ -169,10 +165,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
         UIImagePickerController *picker=[[UIImagePickerController alloc] init];
         picker.sourceType = sourceType;
         picker.delegate = self;
-        [self presentViewController:picker
-                           animated:YES
-                         completion:Nil
-         ];
+        [self presentViewController:picker animated:YES completion:Nil];
     }
 }
 
@@ -183,10 +176,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = sourceType;
         picker.delegate = self;
-        [self presentViewController:picker
-                           animated:YES
-                         completion:Nil
-         ];
+        [self presentViewController:picker animated:YES completion:Nil];
     }
 }
 
@@ -204,13 +194,21 @@ static NSInteger const NoteViewControllerTableSection = 1;
         NSInteger rowObj = [_object count];
         [_object insertObject:imageDictionary atIndex:rowObj];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowObj inSection:0];
-        [_noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self addNoteViewCellForRowAtIndexPath:indexPath];
     };
     [self dismissViewControllerAnimated:YES
                              completion:completion
      ];
 }
 
+- (void)addNoteViewCellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // noteViewにセルを挿入
+    [self.noteView insertRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:(!_object[indexPath.row][@"image"]) ? UITableViewRowAnimationRight : UITableViewRowAnimationLeft];
+    [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+    
 #pragma mark - UITableViewDataSource delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -226,9 +224,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // セルの初期化
-    // Memoセル
-    if (!_object[indexPath.row][@"image"]) {
+    if (!_object[indexPath.row][@"image"]) { // Memoセル
         static NSString *CellIdentifier = @"MemoCell";
         MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
@@ -237,26 +233,50 @@ static NSInteger const NoteViewControllerTableSection = 1;
         // MemoをtextFieldにセット
         cell.textMemo.text = dictMemo[@"text"];
         // Memoの追加日時をLabelにセット
-        NSDate *dateMemo = dictMemo[@"date"];
+        NSDate *date = dictMemo[@"date"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
-        cell.labelMemoDate.text = [dateFormatter stringFromDate:dateMemo];
-        
+        cell.labelMemoDate.text = [dateFormatter stringFromDate:date];
         return cell;
-    // Imageセル
-    } else {
+    } else {                                // Imageセル
         static NSString *CellIdentifier = @"ImageCell";
         ImageNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         NSDictionary *dictImage = _object[indexPath.row];
-        cell.imageView.image = dictImage[@"image"];
-        NSDate *dateImage = dictImage[@"date"];
+        UIImage *image = dictImage[@"image"];
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell.imageView.clipsToBounds = YES;
+        cell.imageView.image = image;
+        NSDate *date = dictImage[@"date"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
-        cell.labelImageDate.text = [dateFormatter stringFromDate:dateImage];
-        
+        cell.labelImageDate.text = [dateFormatter stringFromDate:date];
         return cell;
     }
+}
+
+- (CGFloat)heightFromAspectOfImage:(UIImage *)image cell:(UITableViewCell *)cell
+{
+    NSInteger aspect = image.size.height / image.size.width;
+    CGFloat height = cell.imageView.frame.size.width * aspect;
+    return height;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_object removeObjectAtIndex:indexPath.row];
+    
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
 }
 
 #pragma mark - UITableViewDelegate methods
@@ -266,7 +286,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     if (!_object[indexPath.row][@"image"]) {
         return [MemoNoteViewCell rowHeight];
     } else {
-        return [ImageNoteViewCell rowHeight];
+        return [ImageNoteViewCell rowPaddingHeight];
     }
 }
 
@@ -331,7 +351,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
                           delay:0.0f
                         options:(curve << 16)
                      animations:animation
-                     completion:NULL];
+                     completion:NULL
+     ];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string   // return NO to not change text

@@ -185,9 +185,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="講義名" id="UdT-fA-ZsB">
-                        <barButtonItem key="rightBarButtonItem" title="編集" id="jk4-il-5bQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="講義名" id="UdT-fA-ZsB"/>
                     <connections>
                         <outlet property="addImage" destination="Nl7-ib-uoG" id="X5r-vO-4Lx"/>
                         <outlet property="addLibrary" destination="tXz-ja-OqR" id="3Ce-Uk-UUB"/>

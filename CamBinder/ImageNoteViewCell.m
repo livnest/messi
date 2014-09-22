@@ -31,8 +31,9 @@
     // Configure the view for the selected state
 }
 
-+ (CGFloat)rowHeight{
-    return 220.0f;
++ (CGFloat)rowPaddingHeight
+{
+    return 253.0f;
 }
 
 @end
