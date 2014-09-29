@@ -59,7 +59,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -202,7 +201,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_object removeObjectAtIndex:indexPath.row];
-    
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     }
 }
