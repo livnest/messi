@@ -230,6 +230,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
         if (self.object.count == 0) {
             self.editButtonItem.enabled = NO;
+            self.editButtonItem.title = @"編集";
+            [tableView setEditing:NO animated:YES];
         }
 }
 }
@@ -240,7 +242,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    return;
 }
 
 #pragma mark - UITableViewDelegate methods
