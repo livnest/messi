@@ -53,13 +53,18 @@ static NSInteger const NoteViewControllerTableSection = 1;
         _addMemo.enabled = NO;
     }
     
+    self.navigationItem.rightBarButtonItem = [self editButtonItem];
+    
+    self.editButtonItem.title = @"編集";
+    
+    self.editButtonItem.enabled = NO;
+    
     /* スクロールビューを利用したTableViewの上昇
     // TableViewの位置をキーボードの上部に移動するための準備
     [self.scrollView setDelegate:self];
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setDelaysContentTouches:NO];
      */
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,6 +145,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // textFieldを空にする
     
     
+    
+    
     // テキストと日時をMemoセルの配列に追加
     NSInteger rowObj = [_object count];
     [_object insertObject:memoDictionary atIndex:rowObj];
@@ -153,6 +160,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // noteViewにMemoセルを挿入
     [self.noteView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+    self.editButtonItem.enabled = YES;
 }
 
 #pragma mark - UITableViewDataSource delegate methods
@@ -198,13 +207,33 @@ static NSInteger const NoteViewControllerTableSection = 1;
     return memoCell;
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    [self.noteView setEditing:editing animated:animated];
+    
+    [super setEditing:editing animated:YES];
+    
+    //編集のボタン名変更
+    if(editing){
+        self.editButtonItem.title = @"キャンセル";
+    }else{
+        self.editButtonItem.title = @"編集";
+    }
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_object removeObjectAtIndex:indexPath.row];
-    
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-    }
+        if (self.object.count == 0) {
+            self.editButtonItem.enabled = NO;
+            self.editButtonItem.title = @"編集";
+            [tableView setEditing:NO animated:YES];
+        }
+}
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

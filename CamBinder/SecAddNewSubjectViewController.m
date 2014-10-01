@@ -42,7 +42,7 @@
     _textClass.delegate = self;
     _textSemeseter.delegate = self;
     
-    if (_nameField.text.length ==0) {
+    if (_nameField.text.length == 0) {
         _buttonDone.enabled = NO;
     }
 }
