@@ -265,11 +265,17 @@ static NSInteger const NoteViewControllerTableSection = 1;
     [super setEditing:editing animated:animated];
     [self.noteView setEditing:editing animated:animated];
     
-    [super setEditing:editing animated:YES];
+     [super setEditing:editing animated:YES];
+    
+    if (editing) { // 現在通常モードです。
+        self.noteTabBar.hidden = YES;
+    } else { // 現在編集モードです。
+        self.noteTabBar.hidden = NO;
+    }
     
     //編集のボタン名変更
     if(editing){
-        self.editButtonItem.title = @"キャンセル";
+        self.editButtonItem.title = @"完了";
     }else{
         self.editButtonItem.title = @"編集";
     }
