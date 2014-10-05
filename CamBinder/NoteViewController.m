@@ -12,7 +12,6 @@
 #import "NoteViewConst.h"
 
 static NSInteger const NoteViewControllerTableSection = 1;
-//#define WINDOW_SIZE [[UIScreen mainScreen] applicationFrame].size
 
 @interface NoteViewController () {
     CGRect *_rect;
@@ -60,13 +59,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
     self.editButtonItem.title = @"編集";
     
     self.editButtonItem.enabled = NO;
-    
-    /* スクロールビューを利用したTableViewの上昇
-    // TableViewの位置をキーボードの上部に移動するための準備
-    [self.scrollView setDelegate:self];
-    [self.scrollView setScrollEnabled:NO];
-    [self.scrollView setDelaysContentTouches:NO];
-     */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -99,9 +91,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    // スクロール範囲を設定
-    [self.scrollView setContentSize:CGSizeMake(WINDOW_SIZE.width, WINDOW_SIZE.height)];
 }
 */
 - (void)didReceiveMemoryWarning
@@ -297,7 +286,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
             self.editButtonItem.title = @"編集";
             [tableView setEditing:NO animated:YES];
         }
-}
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -323,11 +312,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (void)keyboardOn:(NSNotification *)notification
 {
-    /* ScrollViewを使用した移動
-     CGPoint scrollPoint = CGPointMake(0.0f, keyboardSize.height);
-     [self.scrollView setContentOffset:scrollPoint animated:YES];
-     */
-    
     // 各アウトレットのサイズ
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
