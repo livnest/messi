@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITableView *noteView;
@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *addTextMemo;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addMemo;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addImage;
+- (IBAction)tapAddImage:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addLibrary;
+- (IBAction)tapAddLibarary:(UIBarButtonItem *)sender;
 
 @property (strong, nonatomic) NSMutableArray *object;
 

@@ -41,6 +41,7 @@
                     <constraint firstAttribute="trailing" secondItem="bPT-Cy-hre" secondAttribute="trailing" constant="20" id="jQT-Ir-Ces"/>
                     <constraint firstItem="Xvj-PL-Tzn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="n6K-5T-kOd"/>
                     <constraint firstAttribute="bottom" secondItem="Xvj-PL-Tzn" secondAttribute="bottom" constant="5" id="rTh-7Y-4en"/>
+                    <constraint firstItem="bPT-Cy-hre" firstAttribute="trailing" secondItem="pVp-6g-gnH" secondAttribute="trailing" id="wc5-c8-UqY"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
