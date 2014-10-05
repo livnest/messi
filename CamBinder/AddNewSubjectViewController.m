@@ -44,6 +44,8 @@
     
     self.editButtonItem.title = @"編集";
     
+    self.editButtonItem.enabled = NO;
+    
     self.tasks = [[NSMutableArray alloc] init];
     
     UINib *nibSubject = [UINib nibWithNibName:@"AddTableTableViewCell" bundle:nil];
@@ -56,7 +58,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:YES];
     
     if(editing){
@@ -125,6 +127,11 @@
         // Delete the row from the data source
         [self.tasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        if (self.tasks.count == 0) {
+            self.editButtonItem.enabled = NO;
+            self.editButtonItem.title = @"編集";
+            [tableView setEditing:NO animated:YES];
+        }
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
@@ -187,6 +194,7 @@
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     // 画面を閉じる
     [self dismissViewControllerAnimated:YES completion:NULL];
+    self.editButtonItem.enabled = YES;
 }
 
 - (void)secAddNewSubjectDidCancel:(SecAddNewSubjectViewController *)contoller

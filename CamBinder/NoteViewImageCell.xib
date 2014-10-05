@@ -15,23 +15,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MTf-UK-350">
+                        <rect key="frame" x="0.0" y="2" width="312" height="149"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rcR-uO-WMR">
+                        <rect key="frame" x="0.0" y="136" width="312" height="17"/>
+                        <color key="backgroundColor" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="Q9O-CI-e5C"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9C-Bo-Dx4">
-                        <rect key="frame" x="8" y="137" width="24" height="14"/>
+                        <rect key="frame" x="8" y="136" width="24" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="ksT-pV-pB5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MTf-UK-350">
-                        <rect key="frame" x="0.0" y="2" width="312" height="149"/>
-                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="rcR-uO-WMR" secondAttribute="trailing" id="2o0-B0-dkh"/>
                     <constraint firstAttribute="bottomMargin" secondItem="z9C-Bo-Dx4" secondAttribute="bottom" constant="-6" id="9xb-Aq-WYZ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="rcR-uO-WMR" secondAttribute="bottom" constant="-8" id="VL8-X0-Rtj"/>
                     <constraint firstItem="MTf-UK-350" firstAttribute="top" secondItem="HcA-mI-zMc" secondAttribute="topMargin" constant="-6" id="Wee-6f-Fpa"/>
                     <constraint firstItem="z9C-Bo-Dx4" firstAttribute="leading" secondItem="HcA-mI-zMc" secondAttribute="leadingMargin" id="hqV-7T-Lnv"/>
                     <constraint firstAttribute="bottomMargin" secondItem="MTf-UK-350" secondAttribute="bottom" constant="-6" id="ngL-xv-zHj"/>
                     <constraint firstItem="MTf-UK-350" firstAttribute="leading" secondItem="HcA-mI-zMc" secondAttribute="leadingMargin" constant="-8" id="sbK-Yy-tFz"/>
                     <constraint firstItem="MTf-UK-350" firstAttribute="trailing" secondItem="HcA-mI-zMc" secondAttribute="trailingMargin" id="uMr-VN-WuL"/>
+                    <constraint firstItem="rcR-uO-WMR" firstAttribute="leading" secondItem="HcA-mI-zMc" secondAttribute="leadingMargin" constant="-8" id="vpS-wj-gxq"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
