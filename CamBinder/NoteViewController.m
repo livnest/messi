@@ -148,10 +148,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     NSLog(@"%ld:「%@」", _object.count + 1, text);
     NSDate *dateMemo = [NSDate date];
     NSDictionary *memoDictionary = @{@"text": text, @"date": dateMemo};
-    // textFieldを空にする
-    
-    
-    
+    // *textFieldを空にする
     
     // テキストと日時をMemoセルの配列に追加
     NSInteger rowObj = [_object count];
@@ -159,6 +156,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowObj inSection:0];
     // noteViewにMemoセルを挿入するメソッドを実行
     [self addNoteViewCellForRowAtIndexPath:indexPath];
+    
+    self.editButtonItem.enabled = YES;
 }
 
 /*
@@ -250,13 +249,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
     } else {                                // Imageセル
         static NSString *CellIdentifier = @"ImageCell";
         ImageNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        // image
+        // Image
         NSDictionary *dictImage = _object[indexPath.row];
         UIImage *image = dictImage[@"image"];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.clipsToBounds = YES;
         cell.imageView.image = image;
-        // date
+        // Date
         NSDate *date = dictImage[@"date"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";

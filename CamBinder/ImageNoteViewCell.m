@@ -33,7 +33,7 @@
 
 + (CGFloat)rowHeight
 {
-    return 253.0f;
+    return 234.0f;
 }
 
 @end
