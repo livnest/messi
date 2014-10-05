@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *_imageView;
 @property (weak, nonatomic) IBOutlet UILabel *labelImageDate;
 
-+ (CGFloat)rowPaddingHeight;
++ (CGFloat)rowHeight;
 
 @end

@@ -286,7 +286,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     if (!_object[indexPath.row][@"image"]) {
         return [MemoNoteViewCell rowHeight];
     } else {
-        return [ImageNoteViewCell rowPaddingHeight];
+        return [ImageNoteViewCell rowHeight];
     }
 }
 
