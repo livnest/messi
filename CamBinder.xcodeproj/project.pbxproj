@@ -18,6 +18,7 @@
 		F120D67F19BA121500D00369 /* ImageNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F120D67E19BA121500D00369 /* ImageNoteViewCell.m */; };
 		F12D724919D0139E00F1F680 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F12D724819D0139E00F1F680 /* img.jpg */; };
 		F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F13FF23019AA4867004CB13E /* NoteViewController.m */; };
+		F19DE2111A17279200FC2588 /* ShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19DE2101A17279200FC2588 /* ShowImageViewController.m */; };
 		F1DCAC4D197A8AF900C98311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4C197A8AF900C98311 /* Foundation.framework */; };
 		F1DCAC4F197A8AF900C98311 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */; };
 		F1DCAC51197A8AF900C98311 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCAC50197A8AF900C98311 /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 		F12D724819D0139E00F1F680 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		F13FF22F19AA4867004CB13E /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
 		F13FF23019AA4867004CB13E /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
+		F19DE20F1A17279200FC2588 /* ShowImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowImageViewController.h; sourceTree = "<group>"; };
+		F19DE2101A17279200FC2588 /* ShowImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowImageViewController.m; sourceTree = "<group>"; };
 		F1DCAC49197A8AF900C98311 /* CamBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DCAC4C197A8AF900C98311 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1DCAC4E197A8AF900C98311 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,6 +164,8 @@
 				B352BB9A19BDB353009346F3 /* SecAddNewSubjectViewController.m */,
 				F13FF22F19AA4867004CB13E /* NoteViewController.h */,
 				F13FF23019AA4867004CB13E /* NoteViewController.m */,
+				F19DE20F1A17279200FC2588 /* ShowImageViewController.h */,
+				F19DE2101A17279200FC2588 /* ShowImageViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				B352BB9B19BDB353009346F3 /* SecAddNewSubjectViewController.m in Sources */,
 				B352BB9819BDA7F6009346F3 /* AddNewSubjectViewController.m in Sources */,
 				F1DCAC63197A8AF900C98311 /* ViewController.m in Sources */,
+				F19DE2111A17279200FC2588 /* ShowImageViewController.m in Sources */,
 				F120D67F19BA121500D00369 /* ImageNoteViewCell.m in Sources */,
 				F1DCAC5D197A8AF900C98311 /* AppDelegate.m in Sources */,
 				F13FF23119AA4867004CB13E /* NoteViewController.m in Sources */,

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShowImageViewController.h"
 
-@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface NoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ShowimageViewControllerDelegate>
 
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITableView *noteView;
@@ -21,5 +22,6 @@
 - (IBAction)tapAddLibarary:(UIBarButtonItem *)sender;
 
 @property (strong, nonatomic) NSMutableArray *object;
+@property (strong, nonatomic) UIImage *selectedImage;
 
 @end
