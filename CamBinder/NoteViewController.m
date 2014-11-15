@@ -15,6 +15,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 @interface NoteViewController () {
     CGRect *_rect;
+    NSIndexPath *imageIndexPath;
 }
 
 @end
@@ -55,9 +56,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
     
     self.navigationItem.rightBarButtonItem = [self editButtonItem];
-    
     self.editButtonItem.title = @"編集";
-    
     self.editButtonItem.enabled = NO;
 }
 
@@ -115,7 +114,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 }
 */
 
-#pragma mark - UITableView AddNoteObject Method
+#pragma mark - UITableView AddNoteObject methods
 
 /* 
  * Memoの挿入
@@ -125,6 +124,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     [_addTextMemo resignFirstResponder];
     [self addObjectMemo:_addTextMemo.text];
+    _addTextMemo.text = @"";
 }
 
 - (void)addObjectMemo:(NSString *)text
@@ -146,6 +146,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // noteViewにMemoセルを挿入するメソッドを実行
     [self addNoteViewCellForRowAtIndexPath:indexPath];
     
+    _addMemo.enabled = NO;
     self.editButtonItem.enabled = YES;
 }
 
@@ -202,8 +203,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     // noteViewにセルを挿入
     [self.noteView insertRowsAtIndexPaths:@[indexPath]
-                         withRowAnimation:(!_object[indexPath.row][@"image"]) ? UITableViewRowAnimationRight : UITableViewRowAnimationLeft];
-    [self.noteView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                         withRowAnimation:(!_object[indexPath.row][@"image"]) ? UITableViewRowAnimationRight : UITableViewRowAnimationLeft
+     ];
+    [self.noteView scrollToRowAtIndexPath:indexPath
+                         atScrollPosition:UITableViewScrollPositionBottom
+                                 animated:YES
+     ];
 }
     
 #pragma mark - UITableViewDataSource delegate methods
@@ -244,6 +249,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.clipsToBounds = YES;
         cell.imageView.image = image;
+        UITapGestureRecognizer *show = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImage:)];
+        [cell.imageView addGestureRecognizer:show];
         // Date
         NSDate *date = dictImage[@"date"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -253,12 +260,14 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
 }
 
+/*
 - (CGFloat)heightFromAspectOfImage:(UIImage *)image cell:(UITableViewCell *)cell
 {
     NSInteger aspect = image.size.height / image.size.width;
     CGFloat height = cell.imageView.frame.size.width * aspect;
     return height;
 }
+ */
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -314,7 +323,28 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+#pragma mark - ShowImageViewControllerDelegate methods
+
+- (void)showImage:(id)sender
+{
+    UIImageView *imageView = (UIImageView *)[sender view];
+    _selectedImage = imageView.image;
+    [self performSegueWithIdentifier:@"showImageView" sender:nil];
+}
+
+- (void)showImageViewControllerDidClosed:(ShowImageViewController *)controller
+{
+    NSLog(@"ShowImageViewControllerDidClosed");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UITextFieldDelegate methods
+
 
 - (void)keyboardOn:(NSNotification *)notification
 {
@@ -394,6 +424,18 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     [textField insertText:@"\n"];
     return YES;
+}
+
+#pragma mark - Segue methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"showImageView"]) {
+        ShowImageViewController *showImageViewController = (ShowImageViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        showImageViewController.delegate = self;
+        UIImage *image = _selectedImage;
+        showImageViewController.image = image;
+    }
 }
 
 @end

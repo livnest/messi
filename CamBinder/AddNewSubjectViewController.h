@@ -12,7 +12,7 @@
 
 @interface AddNewSubjectViewController : UITableViewController <SecAddNewSubjectViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
-    int selectedindex;
+    int selectedIndex;
     
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableSubject;
