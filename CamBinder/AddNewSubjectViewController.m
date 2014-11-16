@@ -16,11 +16,20 @@
 
 @implementation AddNewSubjectViewController
 
-//@synthesize tasks = _tasks;
+////@synthesize tasks = _tasks;
+//
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//    self = [super initWithStyle:style];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -31,8 +40,8 @@
 {
     [super viewDidLoad];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    _tableSubject.delegate = self;
+    _tableSubject.dataSource = self;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -49,7 +58,7 @@
     self.tasks = [[NSMutableArray alloc] init];
     
     UINib *nibSubject = [UINib nibWithNibName:@"AddTableTableViewCell" bundle:nil];
-    [self.tableView registerNib:nibSubject forCellReuseIdentifier:@"SubjectCell"];
+    [_tableSubject registerNib:nibSubject forCellReuseIdentifier:@"SubjectCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -191,7 +200,7 @@
     [_tasks insertObject:item atIndex:0];
     // セルを挿入
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    [_tableSubject insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     // 画面を閉じる
     [self dismissViewControllerAnimated:YES completion:NULL];
     self.editButtonItem.enabled = YES;
