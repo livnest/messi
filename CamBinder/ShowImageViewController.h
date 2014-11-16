@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) id<ShowimageViewControllerDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 - (IBAction)closeButtonTapped:(UIBarButtonItem *)sender;

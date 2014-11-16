@@ -41,27 +41,26 @@
 }
 */
 
+- (void)closeButtonTapped:(UIBarButtonItem *)sender {
+    [self.delegate showImageViewControllerDidClosed:self];
+}
+
 - (void)tapImage
 {
-    UINavigationBar *nBar = self.navigationController.navigationBar;
     if (deAction) {
         [UIView animateWithDuration:0.3 animations:^{
-            nBar.alpha = 0;
+            _navBar.alpha = 0;
         }completion:^(BOOL finished){
-            nBar.hidden = YES;
+            _navBar.hidden = YES;
         }];
         deAction = NO;
     } else {
-        nBar.hidden = NO;
+        _navBar.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            nBar.alpha = 1;
+            _navBar.alpha = 1;
         }completion:nil];
         deAction = YES;
     }
-}
-
-- (void)closeButtonTapped:(UIBarButtonItem *)sender {
-    [self.delegate showImageViewControllerDidClosed:self];
 }
 
 @end
