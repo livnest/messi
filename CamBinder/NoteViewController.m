@@ -277,9 +277,9 @@ static NSInteger const NoteViewControllerTableSection = 1;
      [super setEditing:editing animated:YES];
     
     if (editing) { // 現在通常モードです。
-        self.noteTabBar.hidden = YES;
+        self.noteToolBar.hidden = YES;
     } else { // 現在編集モードです。
-        self.noteTabBar.hidden = NO;
+        self.noteToolBar.hidden = NO;
     }
     
     //編集のボタン名変更
@@ -334,7 +334,13 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     UIImageView *imageView = (UIImageView *)[sender view];
     _selectedImage = imageView.image;
-    [self performSegueWithIdentifier:@"showImageView" sender:nil];
+//    [self performSegueWithIdentifier:@"showImageView" sender:nil];
+    ShowImageViewController *showImageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showImageView"];
+    showImageViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    showImageViewController.delegate = self;
+    UIImage *image = _selectedImage;
+    showImageViewController.image = image;
+    [self presentViewController:showImageViewController animated:YES completion:nil];
 }
 
 - (void)showImageViewControllerDidClosed:(ShowImageViewController *)controller
@@ -352,7 +358,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     NSDictionary *info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     // 移動先の値
-    CGFloat moveTo = self.view.frame.size.height - keyboardSize.height - _noteTabBar.frame.size.height;
+    CGFloat moveTo = self.view.frame.size.height - keyboardSize.height - _noteToolBar.frame.size.height;
     CGFloat resizeTo = self.view.frame.size.height - keyboardSize.height;
     
     //　アニメーションの呼び出し
@@ -365,7 +371,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (void)keyboardOff:(NSNotification *)notification
 {
     // 移動先の値
-    CGFloat moveTo = self.view.frame.size.height - _noteTabBar.frame.size.height;
+    CGFloat moveTo = self.view.frame.size.height - _noteToolBar.frame.size.height;
     CGFloat resizeTo = self.view.frame.size.height;
     
     //　アニメーションの呼び出し
@@ -386,12 +392,12 @@ static NSInteger const NoteViewControllerTableSection = 1;
     UIViewAnimationCurve curve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     // アニメーション本体
     CGSize viewSize = _noteView.frame.size;
-    CGSize tabSize = _noteTabBar.frame.size;
+    CGSize tabSize = _noteToolBar.frame.size;
     __weak typeof (self) _self = self;
     void (^animation)(void);
     animation = ^(void){
         CGRect TabRect = CGRectMake(0, moveTo, tabSize.width, tabSize.height);
-        _self.noteTabBar.frame = TabRect;
+        _self.noteToolBar.frame = TabRect;
         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
         _self.noteView.frame = ViewRect;
     };
@@ -430,12 +436,15 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    /*
     if([segue.identifier isEqualToString:@"showImageView"]) {
+        NSLog(@"Shown ShowImageViewController.");
         ShowImageViewController *showImageViewController = (ShowImageViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
         showImageViewController.delegate = self;
         UIImage *image = _selectedImage;
         showImageViewController.image = image;
     }
+     */
 }
 
 @end
