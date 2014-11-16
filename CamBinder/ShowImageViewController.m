@@ -20,10 +20,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    
+    _scrollView.minimumZoomScale = 1.0;
+    _scrollView.maximumZoomScale = 5.0;
+    _scrollView.bouncesZoom = NO;
+    self.scrollView.delegate = self;
     [_imageView setImage:_image];
+    
+    deAction = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage)];
     [_imageView addGestureRecognizer:tap];
-    deAction = YES;
+    /*
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchImage:)];
+    [_imageView addGestureRecognizer:pinch];
+     */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,9 +52,27 @@
 }
 */
 
+#pragma mark - Delegate methods
+
 - (void)closeButtonTapped:(UIBarButtonItem *)sender {
     [self.delegate showImageViewControllerDidClosed:self];
 }
+
+#pragma mark - UIScrollViewDelegate methods
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    if (scrollView == _scrollView) {
+        return _imageView;
+    }
+    return nil;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
+}
+
+#pragma mark - actionImage methods
 
 - (void)tapImage
 {
@@ -62,5 +91,17 @@
         deAction = YES;
     }
 }
+
+/*
+- (void)pinchImage:(UIPinchGestureRecognizer *)sender
+{
+    CGAffineTransform currentTransForm;
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        currentTransForm = _imageView.transform;
+    }
+    CGFloat scale = [sender scale];
+    _imageView.transform = CGAffineTransformConcat(currentTransForm, CGAffineTransformMakeScale(scale, scale));
+}
+ */
 
 @end
