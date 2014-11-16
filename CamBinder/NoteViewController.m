@@ -431,6 +431,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"showImageView"]) {
+        NSLog(@"Modal To ShowImageView.");
         ShowImageViewController *showImageViewController = (ShowImageViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
         showImageViewController.delegate = self;
         UIImage *image = _selectedImage;

@@ -14,7 +14,7 @@
 		<string>https://github.com/livnest/messi.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CamBinder.xcodeproj/project.xcworkspace</string>
+	<string>CamBinder.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D231700EB3790A50D8FEB9D58B3969A5D7CC4B7E</key>

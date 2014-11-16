@@ -8,7 +8,9 @@
 
 #import "ShowImageViewController.h"
 
-@interface ShowImageViewController ()
+@interface ShowImageViewController (){
+    BOOL deAction;
+}
 
 @end
 
@@ -18,7 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.imageView setImage:_image];
+    [_imageView setImage:_image];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage)];
+    [_imageView addGestureRecognizer:tap];
+    deAction = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +41,27 @@
 }
 */
 
+- (void)tapImage
+{
+    UINavigationBar *nBar = self.navigationController.navigationBar;
+    if (deAction) {
+        [UIView animateWithDuration:0.3 animations:^{
+            nBar.alpha = 0;
+        }completion:^(BOOL finished){
+            nBar.hidden = YES;
+        }];
+        deAction = NO;
+    } else {
+        nBar.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            nBar.alpha = 1;
+        }completion:nil];
+        deAction = YES;
+    }
+}
+
 - (void)closeButtonTapped:(UIBarButtonItem *)sender {
     [self.delegate showImageViewControllerDidClosed:self];
 }
+
 @end
