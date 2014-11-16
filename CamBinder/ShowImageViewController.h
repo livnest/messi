@@ -10,12 +10,13 @@
 
 @protocol ShowimageViewControllerDelegate;
 
-@interface ShowImageViewController : UIViewController
+@interface ShowImageViewController : UIViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) id<ShowimageViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 - (IBAction)closeButtonTapped:(UIBarButtonItem *)sender;
 
