@@ -10,7 +10,7 @@
 #import "AddNewSubject.h"
 #import "SecAddNewSubjectViewController.h"
 
-@interface AddNewSubjectViewController : UITableViewController <SecAddNewSubjectViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>{
+@interface AddNewSubjectViewController : UIViewController <SecAddNewSubjectViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
     int selectedIndex;
     
