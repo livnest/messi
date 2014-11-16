@@ -100,11 +100,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 #pragma mark - Navigation
 
-- (void)setNavigationTitle:(NSDictionary *)dict
-{
-    self.navigationItem.title = dict[@"name"];
-}
-
 /*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -112,7 +107,46 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+ */
+
+- (void)setNavigationTitle:(NSDictionary *)dict
+{
+    self.navigationItem.title = dict[@"name"];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    /*
+     if([segue.identifier isEqualToString:@"showImageView"]) {
+     NSLog(@"Shown ShowImageViewController.");
+     ShowImageViewController *showImageViewController = (ShowImageViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+     showImageViewController.delegate = self;
+     UIImage *image = _selectedImage;
+     showImageViewController.image = image;
+     }
+     */
+}
+
+#pragma mark - ShowImageViewControllerDelegate methods
+
+- (void)showImage:(id)sender
+{
+    UIImageView *imageView = (UIImageView *)[sender view];
+    _selectedImage = imageView.image;
+    //    [self performSegueWithIdentifier:@"showImageView" sender:nil];
+    ShowImageViewController *showImageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showImageView"];
+    showImageViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    showImageViewController.delegate = self;
+    UIImage *image = _selectedImage;
+    showImageViewController.image = image;
+    [self presentViewController:showImageViewController animated:YES completion:nil];
+}
+
+- (void)showImageViewControllerDidClosed:(ShowImageViewController *)controller
+{
+    NSLog(@"ShowImageViewControllerDidClosed");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - UITableView AddNoteObject methods
 
@@ -226,7 +260,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!_object[indexPath.row][@"image"]) { // Memoセル
+    // MemoCell
+    if (!_object[indexPath.row][@"image"]) {
         static NSString *CellIdentifier = @"MemoCell";
         MemoNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
@@ -240,7 +275,9 @@ static NSInteger const NoteViewControllerTableSection = 1;
         dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
         cell.labelMemoDate.text = [dateFormatter stringFromDate:date];
         return cell;
-    } else {                                // Imageセル
+    }
+    // ImageCell
+    else {
         static NSString *CellIdentifier = @"ImageCell";
         ImageNoteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         // Image
@@ -328,27 +365,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
     
 }
 
-#pragma mark - ShowImageViewControllerDelegate methods
-
-- (void)showImage:(id)sender
-{
-    UIImageView *imageView = (UIImageView *)[sender view];
-    _selectedImage = imageView.image;
-//    [self performSegueWithIdentifier:@"showImageView" sender:nil];
-    ShowImageViewController *showImageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showImageView"];
-    showImageViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    showImageViewController.delegate = self;
-    UIImage *image = _selectedImage;
-    showImageViewController.image = image;
-    [self presentViewController:showImageViewController animated:YES completion:nil];
-}
-
-- (void)showImageViewControllerDidClosed:(ShowImageViewController *)controller
-{
-    NSLog(@"ShowImageViewControllerDidClosed");
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma mark - UITextFieldDelegate methods
 
 
@@ -430,21 +446,6 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     [textField insertText:@"\n"];
     return YES;
-}
-
-#pragma mark - Segue methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    /*
-    if([segue.identifier isEqualToString:@"showImageView"]) {
-        NSLog(@"Shown ShowImageViewController.");
-        ShowImageViewController *showImageViewController = (ShowImageViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        showImageViewController.delegate = self;
-        UIImage *image = _selectedImage;
-        showImageViewController.image = image;
-    }
-     */
 }
 
 @end
