@@ -129,7 +129,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPd-Yb-hyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4839" y="-1963"/>
+            <point key="canvasLocation" x="4839" y="-555"/>
         </scene>
         <!--講義名-->
         <scene sceneID="jqQ-yc-ob8">
@@ -187,53 +187,64 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="講義名" id="UdT-fA-ZsB"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addImage" destination="Nl7-ib-uoG" id="X5r-vO-4Lx"/>
                         <outlet property="addLibrary" destination="tXz-ja-OqR" id="3Ce-Uk-UUB"/>
                         <outlet property="addMemo" destination="25l-LE-Ic9" id="EYO-Pc-Yes"/>
                         <outlet property="addTextMemo" destination="PnP-MG-ZmS" id="ZPS-yK-abt"/>
-                        <outlet property="noteTabBar" destination="SjW-6O-FRc" id="BpP-zk-hzV"/>
+                        <outlet property="noteToolBar" destination="SjW-6O-FRc" id="lX9-Fc-hA6"/>
                         <outlet property="noteView" destination="Bv9-s0-CvD" id="Cmc-Wl-V48"/>
-                        <segue destination="EOH-TI-sgB" kind="modal" identifier="showImageView" modalTransitionStyle="crossDissolve" id="5HE-N1-DZn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKY-OM-mJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5328" y="-1243"/>
+            <point key="canvasLocation" x="5242" y="-1243"/>
         </scene>
         <!--Show Image View Controller-->
         <scene sceneID="geC-GM-MWg">
             <objects>
-                <viewController id="Z8S-Gl-RgP" customClass="ShowImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showImageView" id="Z8S-Gl-RgP" customClass="ShowImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b1y-Vs-C3U"/>
                         <viewControllerLayoutGuide type="bottom" id="gyJ-U3-DvY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P2M-gl-jv6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig4-C3-VVO">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig4-C3-VVO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQz-W6-saq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="tintColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem id="pnu-b6-JPK">
+                                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="HOa-R2-HXc">
+                                            <connections>
+                                                <action selector="closeButtonTapped:" destination="Z8S-Gl-RgP" id="pDf-2w-jkb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="gQA-9N-bqo">
-                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="Gnc-gl-M5n">
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="Z8S-Gl-RgP" id="xtp-fZ-Lek"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="Gnc-gl-M5n"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="Ig4-C3-VVO" id="SQ9-6g-Oxp"/>
+                        <outlet property="imageView" destination="Ig4-C3-VVO" id="eya-95-i6O"/>
+                        <outlet property="navBar" destination="kQz-W6-saq" id="op2-P3-ZTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeB-oD-23f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5860" y="-562"/>
+            <point key="canvasLocation" x="5242" y="-555"/>
         </scene>
         <!--Item-->
         <scene sceneID="Ndk-Rk-oA5">
@@ -252,7 +263,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbX-kj-Yfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4363" y="-1243"/>
+            <point key="canvasLocation" x="4437" y="-1243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p1c-AL-7t1">
@@ -270,25 +281,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frz-qO-Pwr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4437" y="-1963"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jf9-U6-G91">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EOH-TI-sgB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quR-Az-Thm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Z8S-Gl-RgP" kind="relationship" relationship="rootViewController" id="rri-Kc-OZ0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3mK-dP-XBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5328" y="-562"/>
+            <point key="canvasLocation" x="4437" y="-555"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
