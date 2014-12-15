@@ -135,13 +135,13 @@
 		F120D67519BA096500D00369 /* NoteViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				F120D67619BA101A00D00369 /* NoteViewImageCell.xib */,
 				F120D67D19BA121500D00369 /* ImageNoteViewCell.h */,
 				F120D67E19BA121500D00369 /* ImageNoteViewCell.m */,
+				F120D67619BA101A00D00369 /* NoteViewImageCell.xib */,
 				F12D724819D0139E00F1F680 /* img.jpg */,
-				F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */,
 				F120D67A19BA11C800D00369 /* MemoNoteViewCell.h */,
 				F120D67B19BA11C800D00369 /* MemoNoteViewCell.m */,
+				F120D67819BA102B00D00369 /* NoteViewMemoCell.xib */,
 			);
 			name = NoteViewCell;
 			sourceTree = "<group>";
