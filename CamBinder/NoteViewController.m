@@ -51,6 +51,11 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // テキストフィールドのデザイン
     // [self textFieldDesign:_addTextMemo];
     
+    // noteViewのコンテンツインセットをタブバーと被らないように調整
+    UIEdgeInsets inset = _noteView.contentInset;
+    inset.bottom += 44;
+    _noteView.contentInset = inset;
+    
     if (_addTextMemo.text.length == 0) {
         _addMemo.enabled = NO;
     }

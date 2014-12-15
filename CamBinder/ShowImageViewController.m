@@ -21,6 +21,7 @@
     // Do any additional setup after loading the view.
     
     [UIApplication sharedApplication].statusBarHidden = YES;
+    _navBar.alpha = 0.7;
     
     _scrollView.minimumZoomScale = 1.0;
     _scrollView.maximumZoomScale = 5.0;
@@ -86,7 +87,7 @@
     } else {
         _navBar.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            _navBar.alpha = 1;
+            _navBar.alpha = 0.7;
         }completion:nil];
         deAction = YES;
     }
