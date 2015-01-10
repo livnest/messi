@@ -151,6 +151,9 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     NSLog(@"ShowImageViewControllerDidClosed");
     [self dismissViewControllerAnimated:YES completion:nil];
+    if ([UIApplication sharedApplication].isStatusBarHidden == YES) {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
 }
 
 #pragma mark - UITableView AddNoteObject methods
@@ -195,6 +198,27 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)tapAddImage:(UIBarButtonItem *)sender
 {
+    // 画像挿入のアクションシートでの分岐処理
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"カメラ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self addImageFromCamera:sender];
+        NSLog(@"camera button tapped.");
+    }];
+    UIAlertAction *liblary = [UIAlertAction actionWithTitle:@"ライブラリ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self addImageFromLibrary:sender];
+        NSLog(@"liblary button tapped.");
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"cancel button tapped.");
+    }];
+    [alertController addAction:camera];
+    [alertController addAction:liblary];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)addImageFromCamera:(UIBarButtonItem *)sender {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){
         UIImagePickerController *picker=[[UIImagePickerController alloc] init];
@@ -204,8 +228,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
 }
 
-- (IBAction)tapAddLibarary:(UIBarButtonItem *)sender
-{
+- (void)addImageFromLibrary:(UIBarButtonItem *)sender {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -249,6 +272,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
                                  animated:YES
      ];
 }
+
     
 #pragma mark - UITableViewDataSource delegate methods
 

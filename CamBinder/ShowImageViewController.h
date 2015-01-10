@@ -16,7 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (weak, nonatomic) IBOutlet UIToolbar *topToolBar;
+@property (weak, nonatomic) IBOutlet UIToolbar *bottomToolBar;
 
 - (IBAction)closeButtonTapped:(UIBarButtonItem *)sender;
 
