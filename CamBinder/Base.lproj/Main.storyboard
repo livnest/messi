@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Ev-jL-PKp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Ev-jL-PKp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--講義一覧-->
@@ -155,7 +156,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="5" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bv9-s0-CvD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="44"/>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjW-6O-FRc">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -214,7 +214,7 @@
         <!--Show Image View Controller-->
         <scene sceneID="geC-GM-MWg">
             <objects>
-                <viewController storyboardIdentifier="showImageView" id="Z8S-Gl-RgP" customClass="ShowImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showImageView" automaticallyAdjustsScrollViewInsets="NO" id="Z8S-Gl-RgP" customClass="ShowImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b1y-Vs-C3U"/>
                         <viewControllerLayoutGuide type="bottom" id="gyJ-U3-DvY"/>
@@ -232,27 +232,45 @@
                                     </imageView>
                                 </subviews>
                             </scrollView>
-                            <navigationBar opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQz-W6-saq">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9x-Ot-FQG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem id="pnu-b6-JPK">
-                                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="HOa-R2-HXc">
-                                            <connections>
-                                                <action selector="closeButtonTapped:" destination="Z8S-Gl-RgP" id="pDf-2w-jkb"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bgj-NA-KDn"/>
+                                    <barButtonItem systemItem="stop" id="DSE-nw-XgE">
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="Z8S-Gl-RgP" id="MvL-2f-S2b"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
-                            </navigationBar>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qao-PW-xfg">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="□" id="bE1-eN-7Hg"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OcH-op-V5c"/>
+                                    <barButtonItem systemItem="save" id="Vht-kW-jvN"/>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qao-PW-xfg" firstAttribute="leading" secondItem="P2M-gl-jv6" secondAttribute="leadingMargin" constant="-16" id="6Lp-7U-b1p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qao-PW-xfg" secondAttribute="trailing" constant="-16" id="PnY-48-ZCV"/>
+                            <constraint firstItem="gyJ-U3-DvY" firstAttribute="top" secondItem="qao-PW-xfg" secondAttribute="bottom" id="QPq-MQ-jgC"/>
+                            <constraint firstItem="K9x-Ot-FQG" firstAttribute="top" secondItem="P2M-gl-jv6" secondAttribute="topMargin" id="apb-eL-TWM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K9x-Ot-FQG" secondAttribute="trailing" constant="-16" id="fuA-TM-WoR"/>
+                            <constraint firstItem="K9x-Ot-FQG" firstAttribute="leading" secondItem="P2M-gl-jv6" secondAttribute="leadingMargin" constant="-16" id="lzP-3B-R4c"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomToolBar" destination="qao-PW-xfg" id="3oI-lI-poe"/>
                         <outlet property="imageView" destination="Ig4-C3-VVO" id="eya-95-i6O"/>
-                        <outlet property="navBar" destination="kQz-W6-saq" id="op2-P3-ZTq"/>
                         <outlet property="scrollView" destination="WLI-Qd-wCf" id="shk-ty-dNt"/>
+                        <outlet property="topToolBar" destination="K9x-Ot-FQG" id="rbW-Ak-0XC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeB-oD-23f" userLabel="First Responder" sceneMemberID="firstResponder"/>

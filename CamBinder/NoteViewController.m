@@ -151,6 +151,9 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     NSLog(@"ShowImageViewControllerDidClosed");
     [self dismissViewControllerAnimated:YES completion:nil];
+    if ([UIApplication sharedApplication].isStatusBarHidden == YES) {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
 }
 
 #pragma mark - UITableView AddNoteObject methods
@@ -195,6 +198,10 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)tapAddImage:(UIBarButtonItem *)sender
 {
+    [self addImage:sender];
+}
+
+- (void)addImage:(UIBarButtonItem *)sender {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){
         UIImagePickerController *picker=[[UIImagePickerController alloc] init];
@@ -206,6 +213,10 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)tapAddLibarary:(UIBarButtonItem *)sender
 {
+    [self addLibrary:sender];
+}
+
+- (void)addLibrary:(UIBarButtonItem *)sender {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
