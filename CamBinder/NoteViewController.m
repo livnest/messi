@@ -39,6 +39,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     self.noteView.delegate = self;
     self.noteView.dataSource = self;
     self.addTextMemo.delegate = self;
+    CGRect textFieldBounds = CGRectMake(0, 0, self.view.bounds.size.width * 0.7, _addTextMemo.bounds.size.height);
+    _addTextMemo.bounds = textFieldBounds;
     
     // カスタムセルをセット
     // MemoCell
@@ -50,6 +52,11 @@ static NSInteger const NoteViewControllerTableSection = 1;
     
     // テキストフィールドのデザイン
     // [self textFieldDesign:_addTextMemo];
+    
+    // noteViewのコンテンツインセットをタブバーと被らないように調整
+    UIEdgeInsets inset = _noteView.contentInset;
+    inset.bottom += 44;
+    _noteView.contentInset = inset;
     
     if (_addTextMemo.text.length == 0) {
         _addMemo.enabled = NO;
@@ -146,6 +153,9 @@ static NSInteger const NoteViewControllerTableSection = 1;
 {
     NSLog(@"ShowImageViewControllerDidClosed");
     [self dismissViewControllerAnimated:YES completion:nil];
+    if ([UIApplication sharedApplication].isStatusBarHidden == YES) {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
 }
 
 #pragma mark - UITableView AddNoteObject methods
@@ -190,6 +200,27 @@ static NSInteger const NoteViewControllerTableSection = 1;
 
 - (IBAction)tapAddImage:(UIBarButtonItem *)sender
 {
+    // 画像挿入のアクションシートでの分岐処理
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"カメラ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self addImageFromCamera:sender];
+        NSLog(@"camera button tapped.");
+    }];
+    UIAlertAction *liblary = [UIAlertAction actionWithTitle:@"ライブラリ" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self addImageFromLibrary:sender];
+        NSLog(@"liblary button tapped.");
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"cancel button tapped.");
+    }];
+    [alertController addAction:camera];
+    [alertController addAction:liblary];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)addImageFromCamera:(UIBarButtonItem *)sender {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){
         UIImagePickerController *picker=[[UIImagePickerController alloc] init];
@@ -199,8 +230,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     }
 }
 
-- (IBAction)tapAddLibarary:(UIBarButtonItem *)sender
-{
+- (void)addImageFromLibrary:(UIBarButtonItem *)sender {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -244,6 +274,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
                                  animated:YES
      ];
 }
+
     
 #pragma mark - UITableViewDataSource delegate methods
 
@@ -365,8 +396,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     
 }
 
-#pragma mark - UITextFieldDelegate methods
-
+#pragma mark - UITextFieldDelegate method
 
 - (void)keyboardOn:(NSNotification *)notification
 {
@@ -409,6 +439,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // アニメーション本体
     CGSize viewSize = _noteView.frame.size;
     CGSize tabSize = _noteToolBar.frame.size;
+    NSLog(@"viewSize:%f  tabSize:%f", viewSize.height, _noteToolBar.frame.origin.y);
     __weak typeof (self) _self = self;
     void (^animation)(void);
     animation = ^(void){
@@ -416,6 +447,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
         _self.noteToolBar.frame = TabRect;
         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
         _self.noteView.frame = ViewRect;
+        NSLog(@"moveto:%f  resizeto:%f", moveTo, resizeTo);
     };
     // アニメーションの実行
     [UIView animateWithDuration:duration
@@ -424,6 +456,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
                      animations:animation
                      completion:NULL
      ];
+    NSLog(@"toolBarY:%f   tableHeight:%f", _noteToolBar.frame.origin.y, _noteView.frame.size.height);
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string   // return NO to not change text

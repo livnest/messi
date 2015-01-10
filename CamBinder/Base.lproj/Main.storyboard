@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Ev-jL-PKp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Ev-jL-PKp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--講義一覧-->
@@ -165,18 +166,11 @@
                                             <action selector="tapAddImage:" destination="c54-TM-9Kr" id="d96-6f-z6K"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="h7N-dH-a6n"/>
-                                    <barButtonItem systemItem="organize" id="tXz-ja-OqR">
-                                        <connections>
-                                            <action selector="tapAddLibarary:" destination="c54-TM-9Kr" id="5oh-Pt-A0e"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MmW-7C-OuJ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GHQ-75-hha"/>
                                     <barButtonItem style="plain" id="0XL-xK-Gtc">
                                         <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="PnP-MG-ZmS">
                                             <rect key="frame" x="97" y="7" width="173" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -184,7 +178,7 @@
                                             </connections>
                                         </textField>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XGP-U0-9su"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DHv-5a-bc2"/>
                                     <barButtonItem systemItem="compose" id="25l-LE-Ic9">
                                         <connections>
                                             <action selector="addMemo:" destination="c54-TM-9Kr" id="Hv7-Ap-qwK"/>
@@ -199,7 +193,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addImage" destination="Nl7-ib-uoG" id="X5r-vO-4Lx"/>
-                        <outlet property="addLibrary" destination="tXz-ja-OqR" id="3Ce-Uk-UUB"/>
                         <outlet property="addMemo" destination="25l-LE-Ic9" id="EYO-Pc-Yes"/>
                         <outlet property="addTextMemo" destination="PnP-MG-ZmS" id="ZPS-yK-abt"/>
                         <outlet property="noteToolBar" destination="SjW-6O-FRc" id="lX9-Fc-hA6"/>
@@ -213,7 +206,7 @@
         <!--Show Image View Controller-->
         <scene sceneID="geC-GM-MWg">
             <objects>
-                <viewController storyboardIdentifier="showImageView" id="Z8S-Gl-RgP" customClass="ShowImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showImageView" automaticallyAdjustsScrollViewInsets="NO" id="Z8S-Gl-RgP" customClass="ShowImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b1y-Vs-C3U"/>
                         <viewControllerLayoutGuide type="bottom" id="gyJ-U3-DvY"/>
@@ -231,27 +224,45 @@
                                     </imageView>
                                 </subviews>
                             </scrollView>
-                            <navigationBar opaque="NO" alpha="0.49999999999999994" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQz-W6-saq">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9x-Ot-FQG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="tintColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem id="pnu-b6-JPK">
-                                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="HOa-R2-HXc">
-                                            <connections>
-                                                <action selector="closeButtonTapped:" destination="Z8S-Gl-RgP" id="pDf-2w-jkb"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bgj-NA-KDn"/>
+                                    <barButtonItem systemItem="stop" id="DSE-nw-XgE">
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="Z8S-Gl-RgP" id="MvL-2f-S2b"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
-                            </navigationBar>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qao-PW-xfg">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="□" id="bE1-eN-7Hg"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OcH-op-V5c"/>
+                                    <barButtonItem systemItem="save" id="Vht-kW-jvN"/>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.1960784314" green="0.1960784314" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qao-PW-xfg" firstAttribute="leading" secondItem="P2M-gl-jv6" secondAttribute="leadingMargin" constant="-16" id="6Lp-7U-b1p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qao-PW-xfg" secondAttribute="trailing" constant="-16" id="PnY-48-ZCV"/>
+                            <constraint firstItem="gyJ-U3-DvY" firstAttribute="top" secondItem="qao-PW-xfg" secondAttribute="bottom" id="QPq-MQ-jgC"/>
+                            <constraint firstItem="K9x-Ot-FQG" firstAttribute="top" secondItem="P2M-gl-jv6" secondAttribute="topMargin" id="apb-eL-TWM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K9x-Ot-FQG" secondAttribute="trailing" constant="-16" id="fuA-TM-WoR"/>
+                            <constraint firstItem="K9x-Ot-FQG" firstAttribute="leading" secondItem="P2M-gl-jv6" secondAttribute="leadingMargin" constant="-16" id="lzP-3B-R4c"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomToolBar" destination="qao-PW-xfg" id="3oI-lI-poe"/>
                         <outlet property="imageView" destination="Ig4-C3-VVO" id="eya-95-i6O"/>
-                        <outlet property="navBar" destination="kQz-W6-saq" id="op2-P3-ZTq"/>
                         <outlet property="scrollView" destination="WLI-Qd-wCf" id="shk-ty-dNt"/>
+                        <outlet property="topToolBar" destination="K9x-Ot-FQG" id="rbW-Ak-0XC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeB-oD-23f" userLabel="First Responder" sceneMemberID="firstResponder"/>

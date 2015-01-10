@@ -20,7 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [UIApplication sharedApplication].statusBarHidden = YES;
+    // StatusBarの非表示
+    if ([UIApplication sharedApplication].isStatusBarHidden == NO) {
+        [UIApplication sharedApplication].statusBarHidden = YES;
+    }
     
     _scrollView.minimumZoomScale = 1.0;
     _scrollView.maximumZoomScale = 5.0;
@@ -78,17 +81,22 @@
 {
     if (deAction) {
         [UIView animateWithDuration:0.3 animations:^{
-            _navBar.alpha = 0;
+            _topToolBar.alpha = 0;
+            _bottomToolBar.alpha = 0;
         }completion:^(BOOL finished){
-            _navBar.hidden = YES;
+            _topToolBar.hidden = YES;
+            _bottomToolBar.hidden = YES;
+            deAction = NO;
         }];
-        deAction = NO;
     } else {
-        _navBar.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            _navBar.alpha = 1;
-        }completion:nil];
-        deAction = YES;
+            _topToolBar.hidden = NO;
+            _bottomToolBar.hidden = NO;
+            _topToolBar.alpha = 1;
+            _bottomToolBar.alpha = 1;
+        }completion:^(BOOL finished){
+            deAction = YES;
+        }];
     }
 }
 
