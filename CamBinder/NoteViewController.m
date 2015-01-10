@@ -39,6 +39,8 @@ static NSInteger const NoteViewControllerTableSection = 1;
     self.noteView.delegate = self;
     self.noteView.dataSource = self;
     self.addTextMemo.delegate = self;
+    CGRect textFieldBounds = CGRectMake(0, 0, self.view.bounds.size.width * 0.7, _addTextMemo.bounds.size.height);
+    _addTextMemo.bounds = textFieldBounds;
     
     // カスタムセルをセット
     // MemoCell
@@ -394,8 +396,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     
 }
 
-#pragma mark - UITextFieldDelegate methods
-
+#pragma mark - UITextFieldDelegate method
 
 - (void)keyboardOn:(NSNotification *)notification
 {
@@ -438,6 +439,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
     // アニメーション本体
     CGSize viewSize = _noteView.frame.size;
     CGSize tabSize = _noteToolBar.frame.size;
+    NSLog(@"viewSize:%f  tabSize:%f", viewSize.height, _noteToolBar.frame.origin.y);
     __weak typeof (self) _self = self;
     void (^animation)(void);
     animation = ^(void){
@@ -445,6 +447,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
         _self.noteToolBar.frame = TabRect;
         CGRect ViewRect = CGRectMake(0, 0, viewSize.width, resizeTo);
         _self.noteView.frame = ViewRect;
+        NSLog(@"moveto:%f  resizeto:%f", moveTo, resizeTo);
     };
     // アニメーションの実行
     [UIView animateWithDuration:duration
@@ -453,6 +456,7 @@ static NSInteger const NoteViewControllerTableSection = 1;
                      animations:animation
                      completion:NULL
      ];
+    NSLog(@"toolBarY:%f   tableHeight:%f", _noteToolBar.frame.origin.y, _noteView.frame.size.height);
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string   // return NO to not change text
